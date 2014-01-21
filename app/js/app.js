@@ -10,7 +10,28 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  
+  $routeProvider.when('/home',
+  	{
+  		templateUrl: 'views/home.html',
+  		//controller: 'homeCtrl'
+  	});
+
+  $routeProvider.when('/dash',
+    {
+      templateUrl: 'views/dash/dashboard.html',
+      //controller: 'dashCtrl'
+    });
+
+  $routeProvider.when('/dash/settings', 
+  	{
+  		templateUrl: 'views/dash/settings.html', 
+  		controller: 'settingCtrl'
+  	});
+
+  $routeProvider.otherwise(
+    {
+      redirectTo: '/home'
+    });
+
 }]);
