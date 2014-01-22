@@ -12,8 +12,13 @@ angular.module('myApp.controllers', []).
 	}
 })
 
-.controller('dashCtrl', function() {	
+.controller('dashCtrl', function($scope) {	
 	console.log('home controller seperated')
+
+	$scope.addbuyProperty = function() {
+		$('#addProperty').modal('show')
+		console.log('show the addbuy modal')
+	}
 })
 
 .controller('settingCtrl', function($scope, $location) {

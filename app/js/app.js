@@ -14,13 +14,13 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home',
   	{
   		templateUrl: 'views/home.html',
-  		//controller: 'homeCtrl'
+  		controller: 'homeCtrl'
   	});
 
   $routeProvider.when('/dash',
     {
       templateUrl: 'views/dash/dashboard.html',
-      //controller: 'dashCtrl'
+      controller: 'dashCtrl'
     });
 
   $routeProvider.when('/dash/settings', 
