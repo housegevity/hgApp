@@ -1,0 +1,46 @@
+<div data-ng-include data-src=" 'views/dash/_navigation.html' "></div>
+
+<h1>Buying List</h1>
+<p>This is a list of potential houses for sale.</p>
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="table-responsive table-bordered">
+		  <table class="table">
+		    <thead>
+			    <tr>
+			    	<th>Property Name</th>
+			    	<th>Location</th>
+			    	<th>Date Added</th>
+				</tr>
+		    </thead>
+		    <tbody>
+			    <tr ng-repeat="property in buyProperties">
+			    	<td>{{property.name}}</td>
+			    	<td>{{property.city}}, {{property.state}}</td>
+			    	<td>{{property.date_added}}</td>
+			    </tr>
+		    </tbody>
+		  </table>
+		</div>
+
+		<br>
+
+		<div class="alert alert-info">To add a new property to this list, click 
+			<a ng-click="addbuyProperty()">here</a>
+		</div>
+	</div>
+
+	<div class="col-md-4 well">
+	TIPS FOR BUYING
+		<ul>
+			<li>Tip #1</li>
+			<li>Tip #2</li>
+			<li>Tip #3</li>
+		</ul>
+	</div>
+</div>	
+
+
+
+<div ng-include=" 'views/dash/_addproperty_modal.html' ">
