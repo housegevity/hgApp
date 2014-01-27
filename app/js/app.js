@@ -23,18 +23,6 @@ config(['$routeProvider', function($routeProvider) {
       controller: 'dashCtrl'
     });
 
-  $routeProvider.when('/dash/my',
-    {
-      templateUrl: 'views/dash/dashboard_my.html',
-      controller: 'myCtrl'
-    });
-
-  $routeProvider.when('/dash/buy',
-    {
-      templateUrl: 'views/dash/dashboard_buy.html',
-      controller: 'buyCtrl'
-    });
-
   $routeProvider.when('/dash/settings', 
   	{
   		templateUrl: 'views/dash/settings.html', 

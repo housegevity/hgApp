@@ -12,63 +12,33 @@
 <div class="row">
   	<div class="col-md-12">
 		<ul class="nav nav-tabs">
-		  <li class="active"><a href="/app/index.html#/my">Dashboard</a></li>
-		  <li><a href="/app/index.html#/my">My Properties</a></li>
-		  <li ><a href="/app/index.html#/dash/buy">Potential Properties</a></li>
+		  <li ng-class="{active: selected == 1}">
+		  	<a href="" ng-click="selected=1">Overview</a>
+		  </li>
+		  <li ng-class="{active: selected == 2}">
+		  	<a href="" ng-click="selected=2">My Properties</a>
+		  </li>
+		  <li ng-class="{active: selected == 3}">
+		  	<a href="" ng-click="selected=3">Potential Properties</a>
+		  </li>
 		</ul>
-		<br>
-		<div class="alert alert-warning"><strong>Warning!</strong> That super cool house that you wanted to buy is going up for sale soon. Check the document ready list to make sure all of your ducks are in a row!</div>
 	</div>
-
-	<div class="col-md-6">
-		<h3>My Properties ({{myPropertieslength}})</h3>
-		<p>This is a list of your properties.</p>
-
-		<div class="table-responsive table-bordered">
-		  <table class="table">
-		    <thead>
-			    <tr>
-			    	<th>Property Name</th>
-			    	<th>Location</th>
-			    	<th>Date Added</th>
-				</tr>
-		    </thead>
-		    <tbody>
-			    <tr ng-repeat="property in myProperties">
-			    	<td>{{property.name}}</td>
-			    	<td>{{property.city}}, {{property.state}}</td>
-			    	<td>{{property.date_added}}</td>
-			    </tr>
-		    </tbody>
-		  </table>
-		</div>
-	</div>
-
-	<div class="col-md-6">
-		<h3>Buying List ({{buyPropertieslength}})</h3>
-		<p>This is a list of potential houses for sale.</p>
-
-		<div class="table-responsive table-bordered">
-		  <table class="table">
-		    <thead>
-			    <tr>
-			    	<th>Property Name</th>
-			    	<th>Location</th>
-			    	<th>Date Added</th>
-				</tr>
-		    </thead>
-		    <tbody>
-			    <tr ng-repeat="property in buyProperties">
-			    	<td>{{property.name}}</td>
-			    	<td>{{property.city}}, {{property.state}}</td>
-			    	<td>{{property.date_added}}</td>
-			    </tr>
-		    </tbody>
-		  </table>
-		</div>
-
+</div>	
 		<br>
 
+		<div ng-if="selected == 1">
+			<div ng-include=" 'views/dash/dashboard_overview.html' "></div>
+		</div>
+		
+		<div ng-if="selected == 2">
+			<div ng-include=" 'views/dash/dashboard_my.html' "></div>
+		</div>
+
+		<div ng-if="selected == 3">
+			<div ng-include=" 'views/dash/dashboard_buy.html' "></div>
+		</div>
 
 	</div>
 </div>
+
+<div ng-include=" 'views/dash/_addproperty_modal.html' ">

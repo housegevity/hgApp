@@ -28,29 +28,6 @@ angular.module('myApp.controllers', [])
 	$scope.addbuyProperty = function() {
 		$('#addProperty').modal('show');
 	}
-
-
-
-})
-
-.controller('myCtrl', function($scope, myProperties, buyProperties) {
-	console.log('myctrl loaded')
-
-	$scope.myProperties = myProperties;
-
-	$scope.addmyProperty = function() {
-		$('#addProperty').modal('show');
-	}
-})
-
-.controller('buyCtrl', function($scope, myProperties, buyProperties) {
-	console.log('buyctrl loaded')
-
-	$scope.buyProperties = buyProperties;
-
-	$scope.addbuyProperty = function() {
-		$('#addProperty').modal('show');
-	}
 })
 
 .controller('settingCtrl', function($scope, $location) {

@@ -1,0 +1,51 @@
+<div class="alert alert-warning"><strong>Warning!</strong> That super cool house that you wanted to buy is going up for sale soon. Check the document ready list to make sure all of your ducks are in a row!</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h3>My Properties ({{myPropertieslength}})</h3>
+		<p>This is a list of your properties.</p>
+
+		<div class="table-responsive table-bordered">
+		  <table class="table">
+		    <thead>
+			    <tr>
+			    	<th>Property Name</th>
+			    	<th>Location</th>
+			    	<th>Date Added</th>
+				</tr>
+		    </thead>
+		    <tbody>
+			    <tr ng-repeat="property in myProperties">
+			    	<td>{{property.name}}</td>
+			    	<td>{{property.city}}, {{property.state}}</td>
+			    	<td>{{property.date_added}}</td>
+			    </tr>
+		    </tbody>
+		  </table>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<h3>Buying List ({{buyPropertieslength}})</h3>
+		<p>This is a list of potential houses for sale.</p>
+
+		<div class="table-responsive table-bordered">
+		  <table class="table">
+		    <thead>
+			    <tr>
+			    	<th>Property Name</th>
+			    	<th>Location</th>
+			    	<th>Date Added</th>
+				</tr>
+		    </thead>
+		    <tbody>
+			    <tr ng-repeat="property in buyProperties">
+			    	<td>{{property.name}}</td>
+			    	<td>{{property.city}}, {{property.state}}</td>
+			    	<td>{{property.date_added}}</td>
+			    </tr>
+		    </tbody>
+		  </table>
+		</div>
+	</div>
+</div>	
