@@ -27,7 +27,14 @@ angular.module('myApp.controllers', [])
 
 	$scope.addbuyProperty = function() {
 		$('#addProperty').modal('show');
+		console.log('wtf')
 	}
+
+	$scope.selected = 1;
+
+	$scope.data = {
+		selectedTab: 1
+	};
 })
 
 .controller('settingCtrl', function($scope, $location) {

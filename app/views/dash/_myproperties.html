@@ -1,4 +1,4 @@
-<h1>MyProperty List</h1>
+<h3>MyProperty List</h3>
 <p>This is a list all of your properties.</p>
 
 <div class="row">
@@ -10,6 +10,7 @@
 			    	<th>Property Name</th>
 			    	<th>Location</th>
 			    	<th>Date Added</th>
+			    	<th>status</th>
 				</tr>
 		    </thead>
 		    <tbody>
@@ -17,6 +18,7 @@
 			    	<td>{{property.name}}</td>
 			    	<td>{{property.city}}, {{property.state}}</td>
 			    	<td>{{property.date_added}}</td>
+			    	<td><span class="glyphicon glyphicon-search"></span></td>
 			    </tr>
 		    </tbody>
 		  </table>
@@ -38,4 +40,6 @@
 		</ul>
 	</div>
 </div>	
+
+<div ng-include=" 'views/dash/_addproperty_modal.html' ">
 

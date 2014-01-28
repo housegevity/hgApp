@@ -24,21 +24,17 @@
 		</ul>
 	</div>
 </div>	
-		<br>
-
-		<div ng-if="selected == 1">
-			<div ng-include=" 'views/dash/dashboard_overview.html' "></div>
-		</div>
 		
-		<div ng-if="selected == 2">
-			<div ng-include=" 'views/dash/dashboard_my.html' "></div>
-		</div>
+<br>
 
-		<div ng-if="selected == 3">
-			<div ng-include=" 'views/dash/dashboard_buy.html' "></div>
-		</div>
-
-	</div>
+<div ng-if="selected == 1">
+	<div ng-include=" 'views/dash/_overview.html' "></div>
 </div>
 
-<div ng-include=" 'views/dash/_addproperty_modal.html' ">
+<div ng-if="selected == 2">
+	<div ng-include=" 'views/dash/_myproperties.html' "></div>
+</div>
+
+<div ng-if="selected == 3">
+	<div ng-include=" 'views/dash/_buyproperties.html' "></div>
+</div>
