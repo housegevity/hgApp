@@ -29,13 +29,20 @@
 		</div>
 	</div>
 
-	<div class="col-md-4 well">
-	TIPS FOR BUYING
-		<ul>
-			<li>Tip #1</li>
-			<li>Tip #2</li>
-			<li>Tip #3</li>
-		</ul>
+	<div class="col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+	         <h3 class="panel-title">Looking to buy a home?</h3>
+	    </div>
+			<div class="panel-body">
+				<p>Make sure you have the following lined up!</p>
+			</div>
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="reqs in buyReqs">
+					{{reqs.name}}
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>	
 

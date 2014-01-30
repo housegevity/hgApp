@@ -16,11 +16,13 @@ angular.module('myApp.controllers', [])
 	}
 })
 
-.controller('dashCtrl', function($scope, myProperties, buyProperties) {	
+.controller('dashCtrl', function($scope, myProperties, buyProperties, buyReqs, ownReqs) {	
 	console.log('home controller seperated')
 
 	$scope.myProperties = myProperties;
 	$scope.buyProperties = buyProperties;
+	$scope.buyReqs = buyReqs;
+	$scope.ownReqs = ownReqs;
 
 	$scope.myPropertieslength = myProperties.length;
 	$scope.buyPropertieslength = buyProperties.length;

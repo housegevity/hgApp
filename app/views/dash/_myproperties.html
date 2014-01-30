@@ -9,16 +9,16 @@
 			    <tr>
 			    	<th>Property Name</th>
 			    	<th>Location</th>
-			    	<th>Date Added</th>
-			    	<th>status</th>
+			    	<th>Documents Submitted</th>
+			    	<th>Approval Status</th>
 				</tr>
 		    </thead>
 		    <tbody>
 			    <tr ng-repeat="property in myProperties">
 			    	<td>{{property.name}}</td>
 			    	<td>{{property.city}}, {{property.state}}</td>
-			    	<td>{{property.date_added}}</td>
-			    	<td><span class="glyphicon glyphicon-search"></span></td>
+			    	<td class="align-center"><span class="glyphicon glyphicon-ok"></span></td>
+			    	<td class="align-center"><span class="glyphicon glyphicon-ok"></span></td>
 			    </tr>
 		    </tbody>
 		  </table>
@@ -31,15 +31,22 @@
 		</div>
 	</div>
 
-	<div class="col-md-4 well">
-	TIPS FOR YOUR Homes
-		<ul>
-			<li>Tip #1</li>
-			<li>Tip #2</li>
-			<li>Tip #3</li>
-		</ul>
+	<div class="col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+	         <h3 class="panel-title">Just in case you sell</h3>
+	    </div>
+			<div class="panel-body">
+				<p>You should always have the following lined up..</p>
+			</div>
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="reqs in ownReqs">
+					{{reqs.name}}
+				</li>
+			</ul>
+		</div>
 	</div>
-</div>	
+</div>
 
 <div ng-include=" 'views/dash/_addproperty_modal.html' ">
 
