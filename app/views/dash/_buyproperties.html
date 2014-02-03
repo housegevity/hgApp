@@ -1,25 +1,38 @@
-<h3>Buying List</h3>
-<p>This is a list of potential houses for sale.</p>
+<div class="row">
+	<div class="col-md-8">
+		<h3>Buying List</h3>
+		<p>This is a list of potential houses for sale.</p>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-md-8">
-		<div class="table-responsive table-bordered">
-		  <table class="table">
-		    <thead>
-			    <tr>
-			    	<th>Property Name</th>
-			    	<th>Location</th>
-			    	<th>Date Added</th>
-				</tr>
-		    </thead>
-		    <tbody>
-			    <tr ng-repeat="property in buyProperties">
-			    	<td>{{property.name}}</td>
-			    	<td>{{property.city}}, {{property.state}}</td>
-			    	<td>{{property.date_added}}</td>
-			    </tr>
-		    </tbody>
-		  </table>
+		<div class="panel panel-default" ng-repeat="property in buyProperties">
+			
+
+		  <div class="panel-heading">
+				<span><b>{{property.name}}</b></span>
+				<span>{{property.city}}, {{property.state}}</span>
+				<span class="pull-right">{{property.completion_status}}</span>
+		  </div>
+
+			<div class="panel-body">
+				<span ng-if="expanded == false">This property is missing several documents. Click <a ng-click="buyChecklist(this)">here</a> to complete this profile.<span>
+			</div>	
+
+			<ul class="list-group" ng-if="expanded == true">
+				<li class="list-group-item text-right" ng-repeat="reqs in buyReqs">
+					<span class="pull-left">{{reqs.name}}</span>
+					<span><a class="btn btn-sm btn-primary" href="">Upload</a></span>
+				</li>
+			</ul>
+
+			<div class="panel-footer text-right">
+   			 <a class="btn btn-default" href="">
+   			 		<span class="glyphicon glyphicon-arrow-down"></span> 
+   			 		Export Document(s)
+   			 	</a>
+  		</div>
 		</div>
 
 		<br>
@@ -35,17 +48,10 @@
 	         <h3 class="panel-title">Looking to buy a home?</h3>
 	    </div>
 			<div class="panel-body">
-				<p>Make sure you have the following lined up!</p>
+				<p>The home buying process is a series of calculated steps.<br><br> Complete each home checklist to ensure that you have all of the nescessary files required for purchasing a home.</p>
 			</div>
-			<ul class="list-group">
-				<li class="list-group-item" ng-repeat="reqs in buyReqs">
-					{{reqs.name}}
-				</li>
-			</ul>
 		</div>
 	</div>
-</div>	
+</div>
 
-
-
-<div ng-include=" 'views/dash/_addproperty_modal.html' ">
+<div ng-include=" 'views/dash/_addproperty_modal.html' "></div>

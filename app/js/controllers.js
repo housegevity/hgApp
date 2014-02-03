@@ -17,7 +17,6 @@ angular.module('myApp.controllers', [])
 })
 
 .controller('dashCtrl', function($scope, myProperties, buyProperties, buyReqs, ownReqs) {	
-	console.log('home controller seperated')
 
 	$scope.myProperties = myProperties;
 	$scope.buyProperties = buyProperties;
@@ -27,9 +26,19 @@ angular.module('myApp.controllers', [])
 	$scope.myPropertieslength = myProperties.length;
 	$scope.buyPropertieslength = buyProperties.length;
 
+	$scope.expanded = false;
+
 	$scope.addbuyProperty = function() {
+		$('#buyCheck').modal('show');
+	}
+
+	$scope.addmyProperty = function() {
 		$('#addProperty').modal('show');
-		console.log('wtf')
+	}
+
+	$scope.buyChecklist = function() {
+		console.log('buy check list')
+		$scope.expanded = true;	
 	}
 
 	$scope.selected = 1;

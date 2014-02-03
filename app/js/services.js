@@ -42,19 +42,29 @@ angular.module('myApp.services', [])
 			'name': '3 Bedroom Fixer Upper',
 			'city': 'Santa Rosa',
 			'state': 'CA',
-			'date_added': '2/3/14'
+			'date_added': '2/3/14',
+			'completion_status': '100%',
 		},
 		{
 			'name': '2 Bedroom Condo',
 			'city': 'Vallejo',
 			'state': 'CA',
-			'date_added': '4/10/20'
+			'date_added': '4/10/20',
+			'completion_status': '80%',
 		},
 		{
 			'name': '2 Bedroom Condo',
 			'city': 'Vallejo',
 			'state': 'CA',
-			'date_added': '4/10/20'
+			'date_added': '4/10/20',
+			'completion_status': '20%',
+		},
+		{
+			'name': '1 Bedroom Apartment',
+			'city': 'Richmond',
+			'state': 'CA',
+			'date_added': '3/25/20',
+			'completion_status': '10%',
 		},
 	];
 
