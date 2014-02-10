@@ -26,8 +26,6 @@ angular.module('myApp.controllers', [])
 	$scope.myPropertieslength = myProperties.length;
 	$scope.buyPropertieslength = buyProperties.length;
 
-	$scope.expanded = false;
-
 	$scope.addbuyProperty = function() {
 		$('#buyCheck').modal('show');
 	}
@@ -36,9 +34,9 @@ angular.module('myApp.controllers', [])
 		$('#addProperty').modal('show');
 	}
 
-	$scope.buyChecklist = function() {
+	$scope.buyChecklist = function(property) {
 		console.log('buy check list')
-		$scope.expanded = true;	
+		$scope.switchit = !$scope.switchit;
 	}
 
 	$scope.selected = 1;
