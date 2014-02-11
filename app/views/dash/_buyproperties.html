@@ -12,16 +12,14 @@
 		  <div class="panel-heading">
 				<span><b>{{property.name}}</b></span>
 				<span>{{property.city}}, {{property.state}}</span>
-				<span>{{property.id}}</span>
 				<span class="pull-right">{{property.completion_status}}</span>
 		  </div>
 
 			<div class="panel-body">
 				<span>
 					This property is missing several documents. Click 
-					<a ng-click="buyChecklist(property)">here</a> to complete this profile.
+					<a ng-href="property/{{property.id}}">here</a> to complete this profile.
 				<span>
-					<h2>{{property.switchit}}</h2>
 			</div>	
 
 			<ul class="list-group" ng-if="expanded[$index] == true">

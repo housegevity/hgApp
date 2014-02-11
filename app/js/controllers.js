@@ -35,9 +35,9 @@ angular.module('myApp.controllers', [])
 	}
 
 	$scope.buyChecklist = function(property) {
-		console.log('buy check list')
-		$scope.switchit = !$scope.switchit;
-	}
+		$scope.switchit = 2;
+		console.log('param selected')
+	};
 
 	$scope.selected = 1;
 

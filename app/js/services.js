@@ -9,25 +9,29 @@ angular.module('myApp.services', [])
 			'name': '3 Bedroom Fixer Upper',
 			'city': 'Santa Rosa',
 			'state': 'CA',
-			'date_added': '2/3/14'
+			'date_added': '2/3/14',
+			'completion_status': '80%',
 		},
 		{
 			'name': '2 Bedroom Condo',
 			'city': 'Vallejo',
 			'state': 'CA',
-			'date_added': '4/10/20'
+			'date_added': '4/10/20',
+			'completion_status': '50%',
 		},
 		{
 			'name': 'Sophias Apartment',
 			'city': 'Salt Lake City',
 			'state': 'UT',
-			'date_added': '2/5/14'
+			'date_added': '2/5/14',
+			'completion_status': '40%',
 		},		
 		{
 			'name': 'Ski Condo',
 			'city': 'Salt Lake City',
 			'state': 'UT',
-			'date_added': '2/5/14'
+			'date_added': '2/5/14',
+			'completion_status': '50%',
 		},
 	]
 
@@ -45,7 +49,7 @@ angular.module('myApp.services', [])
 			'date_added': '2/3/14',
 			'completion_status': '100%',
 			'id': 1,
-			'switchit': '1',
+			'switchit': 1,
 		},
 		{
 			'name': '2 Bedroom Condo',
@@ -54,8 +58,7 @@ angular.module('myApp.services', [])
 			'date_added': '4/10/20',
 			'completion_status': '80%',
 			'id': 2,
-			'switchit': '1',
-
+			'switchit': 1,
 		},
 		{
 			'name': '2 Bedroom Condo',
@@ -64,8 +67,7 @@ angular.module('myApp.services', [])
 			'date_added': '4/10/20',
 			'completion_status': '20%',
 			'id': 3,
-			'switchit': '1',
-
+			'switchit': 1,
 		},
 		{
 			'name': '1 Bedroom Apartment',
@@ -74,7 +76,7 @@ angular.module('myApp.services', [])
 			'date_added': '3/25/20',
 			'completion_status': '10%',
 			'id': 4,
-			'switchit': '1',
+			'switchit': 1,
 		},
 	];
 
