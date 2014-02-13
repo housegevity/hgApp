@@ -16,13 +16,18 @@ angular.module('myApp.controllers', [])
 	}
 })
 
-.controller('dashCtrl', function($scope, myProperties, buyProperties, buyReqs, ownReqs) {	
+.controller('dashCtrl', function($scope, $location, myProperties, buyProperties, buyReqs, ownReqs) {	
 
+	//WATCH THE ROUTE, player
+	$scope.currentRoute = $location.url();
+
+	//DATA DEPENDENCY INJECTIONS
 	$scope.myProperties = myProperties;
 	$scope.buyProperties = buyProperties;
 	$scope.buyReqs = buyReqs;
 	$scope.ownReqs = ownReqs;
 
+	//DATA MANIPULATIONS
 	$scope.myPropertieslength = myProperties.length;
 	$scope.buyPropertieslength = buyProperties.length;
 

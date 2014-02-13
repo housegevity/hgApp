@@ -23,11 +23,23 @@ config(['$routeProvider', function($routeProvider) {
       controller: 'dashCtrl'
     });
 
+  $routeProvider.when('/dash/my', 
+    {
+      templateUrl: 'views/dash/dashboard.html',
+      controller: 'dashCtrl'
+  });
+
+  $routeProvider.when('/dash/buy', 
+    {
+      templateUrl: 'views/dash/dashboard.html',
+      controller: 'dashCtrl'
+  });
+
   $routeProvider.when('/dash/settings', 
-  	{
-  		templateUrl: 'views/dash/settings.html', 
-  		controller: 'settingCtrl'
-  	});
+    {
+      templateUrl: 'views/dash/settings.html', 
+      controller: 'settingCtrl'
+  });
 
   $routeProvider.otherwise(
     {
