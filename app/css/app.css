@@ -28,3 +28,16 @@
   content: "";
   padding: 0;
 }
+
+.visible {
+  display: inherit;
+  background-color: red;
+}
+
+.success {
+  background-color: green;
+}
+
+.failure {
+  background-color: red;
+}

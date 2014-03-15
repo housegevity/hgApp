@@ -15,35 +15,29 @@ config(['$routeProvider', function($routeProvider) {
   	{
   		templateUrl: 'views/home.html',
   		controller: 'homeCtrl'
-  	});
-
-  $routeProvider.when('/dash',
+  	}
+  ).
+  when('/dash',
     {
       templateUrl: 'views/dash/dashboard.html',
       controller: 'dashCtrl'
-    });
-
-  $routeProvider.when('/dash/my', 
+    }
+  ).
+  when('/property/:propertyID', 
     {
-      templateUrl: 'views/dash/dashboard.html',
-      controller: 'dashCtrl'
-  });
-
-  $routeProvider.when('/dash/buy', 
-    {
-      templateUrl: 'views/dash/dashboard.html',
-      controller: 'dashCtrl'
-  });
-
-  $routeProvider.when('/dash/settings', 
+      templateUrl: 'views/dash/property.html',
+      controller: 'propertyCtrl'
+    }
+  ).
+  when('/dash/settings', 
     {
       templateUrl: 'views/dash/settings.html', 
       controller: 'settingCtrl'
-  });
-
-  $routeProvider.otherwise(
+    }
+  ).otherwise(
     {
       redirectTo: '/home'
-    });
+    }
+  );
 
 }]);

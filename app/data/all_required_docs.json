@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "category": "Essential Documents",
+        "completion_status": "100",
+        "doc_name": [
+            "Recorded Deed",
+            "Closing Documents from Purchase of house",
+            "Updated Proof of Insurance"
+        ] 
+    },
+    {
+        "id": 2,
+        "category": "Renovation Documents",
+        "completion_status": "30",
+        "doc_name": [
+            "Receipts for upgrades and fixes",
+            "Architectural Drawings and Plans",
+            "Renovation Contract",
+            "Approved City Plans",
+            "Warranties for Appliances"
+        ] 
+    },
+    {
+        "id": 3,
+        "category": "Rental Property Documents",
+        "completion_status": "20",
+        "doc_name": [
+            "Signed and updated Lease",
+            "Ownership Entity Docs"
+        ] 
+    }
+]

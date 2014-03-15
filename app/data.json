@@ -1,0 +1,18 @@
+{
+    "name": "3 Bedroom Fixer Upper",
+    "city": "Santa Rosa",
+    "id": 1,
+    "state": "CA",
+    "date_added": "2/3/14",
+    "completion_status": "80%",
+    "imgURL": "http://dfon12yb6dcdf.cloudfront.net/product/kr4f0uv5tkd6slvmn7r9j4h4jj/w1024x683.jpg?v=4"
+},
+{
+    "name": "Cool House",
+    "city": "Santa Rosa",
+    "id": 2,
+    "state": "CA",
+    "date_added": "2/3/14",
+    "completion_status": "80%",
+    "imgURL": "http://dfon12yb6dcdf.cloudfront.net/product/kr4f0uv5tkd6slvmn7r9j4h4jj/w1024x683.jpg?v=4"
+}

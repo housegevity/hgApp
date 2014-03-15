@@ -9,32 +9,54 @@
 
 <hr>
 
+<h3>My Properties</h3>
+<p>This is a list all of your properties.</p>
+
 <div class="row">
-  	<div class="col-md-12">
-		<ul class="nav nav-tabs">
-		  <li ng-class="{active: selected == 1}">
-		  	<a href="" ng-click="selected=1">Overview</a>
-		  </li>
-		  <li ng-class="{active: selected == 2}">
-		  	<a href="" ng-click="selected=2">My Properties</a>
-		  </li>
-		  <li ng-class="{active: selected == 3}">
-		  	<a href="" ng-click="selected=3">Potential Properties</a>
-		  </li>
-		</ul>
+		<div class="col-md-6" ng-repeat="property in myProperties">
+			<div class="panel panel-default">
+				
+			  <div class="panel-heading">
+					<span><b>{{property.name}}</b></span>
+					<span>{{property.city}}, {{property.state}}</span>
+					<span><a href="#/property/{{property.id}}">view</a></span>
+					<span class="pull-right">{{property.completion_status}}</span>
+			  </div>
+
+			  <div class="panel-body">
+					<div class="alert alert-danger">You are missing several important documents for this property. Click <a href="#/property/{{property.id}}">here</a> to complete them.
+					</div>
+				</div>
+
+				<ul class="list-group">
+    			<li class="list-group-item">
+    				Square Ft.
+    				<span class="badge">{{property.sq_ft}}4,200 sq/ft</span>
+    			</li>
+    			<li class="list-group-item">
+    				Year Built
+    				<span class="badge">{{property.year_built}}1997</span>
+    			</li>
+    			<li class="list-group-item">
+    				Bedrooms
+    				<span class="badge">{{property.bedrooms}}2</span> Bedrooms<br>
+    			</li>
+    		  <li class="list-group-item">
+    		  	Bathrooms
+    		  	<span class="badge">{{property.bathrooms}}2.5</span>
+    		  </li>
+    		  <li class="list-group-item">
+    		  	Lot Size
+    		  	<span class="badge">{{property.lot_size}}1.2 acres</span>
+    		  </li>
+    		</ul>
+			</div>
+		</div>
+</div>
+
+	<div class="alert alert-info">To add a new property, click 
+		<a ng-click="addmyProperty()">here</a>
 	</div>
-</div>	
-		
-<br>
 
-<div ng-if="selected == 1">
-	<div ng-include=" 'views/dash/_overview.html' "></div>
-</div>
 
-<div ng-if="selected == 2">
-	<div ng-include=" 'views/dash/_myproperties.html' "></div>
-</div>
-
-<div ng-if="selected == 3">
-	<div ng-include=" 'views/dash/_buyproperties.html' "></div>
-</div>
+<div ng-include=" 'views/dash/_addproperty_modal.html' ">

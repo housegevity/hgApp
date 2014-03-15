@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"name": "Check sinks, toilets, faucets, and underlying areas for leaks"
+	},	
+	{
+		"id": 2,
+		"name": "Check Water Heater functionality"
+	},
+	{
+		"id": 3,
+		"name": "Clean out HVAC Ducting"
+	},	
+	{
+		"id": 4,
+		"name": "Check Sewage Systems"
+	},	
+	{
+		"id": 5,
+		"name": "Flip Electrical Breaker and Check Wiring"
+	}
+]
