@@ -16,18 +16,32 @@ angular.module('myApp.controllers', [])
 	}
 })
 
-.controller('dashCtrl', function($scope, $location, $routeParams, myProperties, buyReqs, ownReqs) {	
+.controller('dashCtrl', function($scope, $http, $location, $routeParams, buyReqs, ownReqs) {	
 
 	//GRAB THE DATA DEPENDENCY INJECTIONS
-	$scope.myProperties = myProperties;
 	$scope.ownReqs = ownReqs;
+
+	$http.get('data/all_properties.json').success(function(data) {
+		$scope.all_properties = data;
+		$scope.all_propertiesLength = $scope.all_properties.length;
+
+		$scope.sumNotifications = 0;
+
+		var sum=0;
+
+		for (var i = 0; i < $scope.all_properties.length; i+=1)
+			{
+				$scope.notificationsSum = $scope.all_properties[i].notifications.length
+				console.log($scope.all_properties[i].notifications.length)
+		};
+
+	});
+
+
 
 	//WATCH THE ROUTE, player
 	$scope.currentRoute = $location.url();
 	$scope.propertyID = $routeParams.propertyID;
-
-	//DATA MANIPULATIONS
-	$scope.myPropertieslength = myProperties.length;
 
 	$scope.addbuyProperty = function() {
 		$('#buyCheck').modal('show');
@@ -49,19 +63,22 @@ angular.module('myApp.controllers', [])
 	};
 })
 
-.controller('propertyCtrl', function($scope, $location, $routeParams, $http, myProperties, ownReqs, documents) {
+.controller('propertyCtrl', function($scope, $location, $routeParams, $http, ownReqs, documents) {
 
 	$scope.selectedTab = 1;
-
-	//GRAB THE DATA DEPENDENCY INJECTIONS
-	$scope.myProperties = myProperties;
 	$scope.ownReqs = ownReqs;
 
 	//GRAB THE NESCESSARY JSON DATA
 
-	$http.get('data/properties/' + $routeParams.propertyID + '.json').success(function(data) {
-		$scope.properties = data;
+	$http.get('data/all_properties.json').success(function(data) {
+		$scope.all_properties = data;
+		$scope.all_propertiesLength = $scope.all_properties.length;
+		$scope.selectedProperty = $scope.all_properties[$routeParams.propertyID - 1]
 	});
+
+	// $http.get('data/properties/' + $routeParams.propertyID + '.json').success(function(data) {
+	// 	$scope.properties = data;
+	// });
 
 	$http.get('data/all_required_docs.json').success(function(data) {
 		$scope.required_docs = data;

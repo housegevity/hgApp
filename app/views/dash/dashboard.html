@@ -1,62 +1,70 @@
 <div data-ng-include data-src=" 'views/dash/_navigation.html' "></div>
 
-<h1>Dashboard</h1>
+<div class="container">
+	<h1>Dashboard</h1>
 
-<div class="alert alert-info alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <strong>Welcome to your Dashboard!</strong> You are now logged in as Alice Flaherty.
-</div>
+	<div class="alert alert-info alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>Welcome to your Dashboard!</strong> You are now logged in as Alice Flaherty.
+	</div>
 
-<hr>
+	<hr>
 
-<h3>My Properties</h3>
-<p>This is a list all of your properties.</p>
+	<h3>My Properties ({{all_propertiesLength}})</h3>
+	<p>This is a list all of your properties.</p>
 
-<div class="row">
-		<div class="col-md-6" ng-repeat="property in myProperties">
-			<div class="panel panel-default">
-				
-			  <div class="panel-heading">
-					<span><b>{{property.name}}</b></span>
-					<span>{{property.city}}, {{property.state}}</span>
-					<span><a href="#/property/{{property.id}}">view</a></span>
-					<span class="pull-right">{{property.completion_status}}</span>
-			  </div>
+	<div class="row">
+			<div class="col-md-6" ng-repeat="property in all_properties">
+				<div class="panel panel-default">
+					
+				  <div class="panel-heading">
+						<h4>
+							{{property.name}}
+							<span class="pull-right badge"><b>{{property.completion_status}}%</b> complete
+							</span>
+						</h4>
+						<span>{{property.city}}, {{property.state}}</span>
+						<span><a href="#/property/{{property.id}}">view</a></span>
+				  </div>
 
-			  <div class="panel-body">
-					<div class="alert alert-danger">You are missing several important documents for this property. Click <a href="#/property/{{property.id}}">here</a> to complete them.
+					<img class="img-responsive" ng-src="{{property.imgURL}}">
+
+					<div class="panel-body">
+						<div class="alert alert-danger" style="margin-bottom: 0;">You are missing several important documents for this property. Click <a href="#/property/{{property.id}}">here</a> to complete them.
+						</div>
 					</div>
-				</div>
 
-				<ul class="list-group">
-    			<li class="list-group-item">
-    				Square Ft.
-    				<span class="badge">{{property.sq_ft}}4,200 sq/ft</span>
-    			</li>
-    			<li class="list-group-item">
-    				Year Built
-    				<span class="badge">{{property.year_built}}1997</span>
-    			</li>
-    			<li class="list-group-item">
-    				Bedrooms
-    				<span class="badge">{{property.bedrooms}}2</span> Bedrooms<br>
-    			</li>
-    		  <li class="list-group-item">
-    		  	Bathrooms
-    		  	<span class="badge">{{property.bathrooms}}2.5</span>
-    		  </li>
-    		  <li class="list-group-item">
-    		  	Lot Size
-    		  	<span class="badge">{{property.lot_size}}1.2 acres</span>
-    		  </li>
-    		</ul>
+					<ul class="list-group">
+	    			<li class="list-group-item">
+	    				Square Ft.
+	    				<span class="badge">{{property.sq_ft}} sq/ft</span>
+	    			</li>
+	    			<li class="list-group-item">
+	    				Year Built
+	    				<span class="badge">{{property.year_built}}</span>
+	    			</li>
+	    			<li class="list-group-item">
+	    				Bedrooms
+	    				<span class="badge">{{property.bedrooms}}</span>
+	    			</li>
+	    		  <li class="list-group-item">
+	    		  	Bathrooms
+	    		  	<span class="badge">{{property.bathrooms}}</span>
+	    		  </li>
+	    		  <li class="list-group-item">
+	    		  	Lot Size
+	    		  	<span class="badge">{{property.lot_size}} acres</span>
+	    		  </li>
+	    		</ul>
+
+				</div>
 			</div>
-		</div>
-</div>
+	</div>
 
 	<div class="alert alert-info">To add a new property, click 
 		<a ng-click="addmyProperty()">here</a>
 	</div>
+</div>
 
 
 <div ng-include=" 'views/dash/_addproperty_modal.html' ">

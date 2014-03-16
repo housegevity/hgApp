@@ -2,25 +2,6 @@
 
 angular.module('myApp.services', [])
 
-.factory('myProperties', function() {
-
-	var myProperties = [
-		{
-		    "name": "3 Bedroom Fixer Upper",
-		    "city": "Santa Rosa",
-		    "id": 1,
-		},
-		{
-		    "name": "Ski Cabin",
-		    "city": "Tahoe",
-		    "id": 2,
-		}
-	]
-
-	//return the array here
-	return myProperties
-})
-
 .factory('documents', function() {
 
 	var documents = [

@@ -1,0 +1,38 @@
+[
+	{
+	    "name": "3 Bedroom Fixer Upper",
+	    "city": "Santa Rosa",
+	    "id": 1,
+	    "state": "CA",
+	    "date_added": "2/3/14",
+	    "completion_status": "20",
+	    "imgURL": "http://dfon12yb6dcdf.cloudfront.net/product/kr4f0uv5tkd6slvmn7r9j4h4jj/w1024x683.jpg?v=4",
+	    "notifications": [
+	    	"Quarterly Checklist",
+	    	"Pre-Summer",
+	    	"Annual Checklist"
+	    ],
+	    "sq_ft": 2200,
+	    "year_built": 1994,
+	    "bedrooms": 3,
+	    "bathrooms": 2.5,
+	    "lot_size": 2.5
+	},
+	{
+	    "name": "Ski Cabin",
+	    "city": "Tahoe",
+	    "id": 2,
+	    "state": "CA",
+	    "date_added": "3/3/14",
+	    "completion_status": "45",
+	    "imgURL": "http://dfon12yb6dcdf.cloudfront.net/product/qr3v0ses9mhuljqd71p0pdgdj3/w1024x683.JPG?v=4",
+	    "notifications": [
+	    	"Quarterly Checklist"
+	    ],
+	    "sq_ft": 1950,
+	    "year_built": 1984,
+	    "bedrooms": 3.5,
+	    "bathrooms": 2,
+	    "lot_size": 3
+	}
+]

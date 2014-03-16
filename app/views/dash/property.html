@@ -1,155 +1,162 @@
 <div data-ng-include data-src=" 'views/dash/_navigation.html' "></div>
 
-<div class="row">
-	<div class="col-md-2">
-		<img class="img-responsive" ng-src="{{properties.imgURL}}">
-	</div>
-	<div class="col-md-10">
-		<h2>{{properties.name}} in {{properties.city}}</h2>
-		<h4>
-			<small>Added {{properties.date_added}}</small>
-		</h4>
-	</div>
-</div>
-
-<br>
-
-<h3>Notificaitons 
-	<span class="badge">{{properties.notifications.qty}}</span>
-</h3>
-
-<div class="alert alert-danger" ng-repeat="warnings in properties.notifications">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>Warning!</strong> You have not completed your {{warnings}} documents. Click <a href="" class="alert-link">here</a> to complete them.
-</div>
-
-<div class="row">
-
-	<div class="col-md-7">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-	      <h3 class="panel-title">
-				<span class="glyphicon glyphicon glyphicon-file"></span>
-	      Required Documents 
-	      </h3>
-	    </div>
-			
-			<div class="panel-body">
-				<p>Make sure you complete all of the required docs for your home.</p>
-				Please go through the following categories below to complete the remainding parts</p>
-			</div>
-
-		  <ul class="list-group" >
-		    <li ng-click="setSelected(required_doc.id)" ng-repeat="required_doc in required_docs" class="list-group-item">
-		    	<h4>
-						{{required_doc.category || 'FAILED TO LOAD CATEGORIES' }}
-		    		<span class="pull-right label label-default">{{required_doc.completion_status}}% Complete</span>
-		    	</h4>
-		    	
-		    	<div class="table-responsive" ng-class="{hidden: !(required_doc.id == selectedDocID)}" >
-						<table class="table">
-							<tr ng-repeat="document_name in required_doc.doc_name">
-								<td>
-  								<span class="glyphicon glyphicon-file"></span>
-			    				{{document_name || 'doc name'}}
-									<span class="pull-right">(<a>download</a> | <a>replace</a>)</span>	    				
-		    				</td>
-							</tr>
-						</table>
-			    	<p>
-			    		<a class="btn btn-default btn-block" ng-click="addDocument()">
-			    			<span class="glyphicon glyphicon-upload"></span>
-			    			Upload a new document
-			    		</a>
-			    	</p>
-			    	<p>
-			    		<a class="btn btn-default btn-block">
-			    			<span class="glyphicon glyphicon-download"></span>
-			    			Download all documents
-			    		</a>
-			    	</p>
-					</div>
-		    </li>
-		  </ul>
-
-		  <div class="panel-footer text-right">
-				<span class="glyphicon glyphicon-download"></span>
-				<span>Download all documents <a href="">here</a></span>
-			</div>
-
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<img class="img-responsive" ng-src="{{selectedProperty.imgURL}}">
+		</div>
+		<div class="col-md-10">
+			<h2>{{selectedProperty.name}} in {{selectedProperty.city}}</h2>
+			<h4>
+				<small>Added {{selectedProperty.date_added}}</small>
+			</h4>
 		</div>
 	</div>
 
-	<div class="col-md-5">
-	
-		<div class="panel panel-default">
-			<div class="panel-heading">
-	        <h3 class="panel-title">	         
-	         	<span class="glyphicon glyphicon-list-alt"></span>
-						To Do List
-					</h3>
-	    </div>
-	   	
-	   	<div class="panel-body">
-	   		<p>You are <strong>{{properties.completion_status}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
+	<br>
 
-	   		<div class="progress">
-				  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completion_status}}" aria-valuemin="0" aria-valuemax="100" style="width: {{properties.completion_status}}%;">
-				 	{{properties.completion_status}}%
-				  </div>
+	<h4 ng-if="selectedProperty.notifications.length > 0">Notificaitons 
+		<span class="badge">{{selectedProperty.notifications.length}}</span>
+	</h4>
+
+	<div class="alert alert-danger" ng-repeat="warnings in selectedProperty.notifications">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<strong>Warning!</strong> You have not completed your {{warnings}} documents. Click <a href="" class="alert-link">here</a> to complete them.
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-7">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+		      <h3 class="panel-title">
+						<span class="glyphicon glyphicon glyphicon-file"></span>
+		      	Required Documents 
+		      </h3>
+		    </div>
+				
+				<div class="panel-body">
+					<p>Make sure you complete all of the required docs for your home.</p>
+					<p>Please go through the following categories below to complete the remainding parts</p>
 				</div>
 
-				<hr>
+			  <ul class="list-group" >
+			    <li ng-click="setSelected(required_doc.id)" ng-repeat="required_doc in required_docs" class="list-group-item">
+			    	<h4>
+							{{required_doc.category || 'FAILED TO LOAD CATEGORIES' }}
+			    		<span class="pull-right label label-default">{{required_doc.completion_status}}% Complete</span>
+			    	</h4>
+			    	
+			    	<div class="table-responsive" ng-class="{hidden: !(required_doc.id == selectedDocID)}" >
+							<table class="table">
+								<tr ng-repeat="document_name in required_doc.doc_name">
+									<td>
+	  								<span class="glyphicon glyphicon-file"></span>
+				    				{{document_name || 'doc name'}}
+										<span class="pull-right">(<a>export</a> | <a>replace</a>)</span>	    				
+			    				</td>
+								</tr>
+							</table>
+				    	<p>
+				    		<a class="btn btn-default btn-block" ng-click="addDocument()">
+				    			<span class="glyphicon glyphicon-upload"></span>
+				    			Upload a new document
+				    		</a>
+				    	</p>
+				    	<p>
+				    		<a class="btn btn-default btn-block">
+				    			<span class="glyphicon glyphicon-download"></span>
+				    			Download all documents
+				    		</a>
+				    	</p>
+						</div>
+			    </li>
+			  </ul>
 
-	   		<h4>Quarterly Checklist ({{quarterly_notificationsLength}})</h4>
-				<ul class="list-group">
-	   			<li class="list-group-item" ng-repeat="quarterlynotification in quarterly_notifications">
-	   				<input type="checkbox" id="chk1" name="chk1">
-	   				{{quarterlynotification.name}}
-	   			</li>
-	   		</ul>
-	    
-	    	<hr>
+			  <div class="panel-footer">
+					<span class="glyphicon glyphicon-download"></span>
+					<a>Export all documents</a> 
+				</div>
 
-	   		<h4>Seasonal Checklists ({{presummer_notificationsLength + prewinter_notificationsLength}})</h4>
-	   		<ul class="nav nav-tabs">
-				  <li ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">
-				  	<a>Pre-Winter ({{presummer_notificationsLength}})</a>
-				  </li>
-				  <li ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">
-				  	<a>Pre-Summer ({{prewinter_notificationsLength}})</a>
-				  </li>
-				</ul>
+			</div>
 
-				<br>
-
-	    	<ul class="list-group" ng-if="selectedTab == 1">
-					<li class="list-group-item" ng-repeat="prewinterwarnings in prewinter_notifications">
-						<input type="checkbox" id="chk1" name="chk1">
-						{{prewinterwarnings.name}}
-					</li>
-				</ul>
-
-				<ul class="list-group" ng-if="selectedTab == 2">
-						<li class="list-group-item" ng-repeat="presummerwarnings in presummer_notifications">
-							<input type="checkbox" id="chk1" name="chk1">
-							{{presummerwarnings.name}}
-						</li>
-				</ul>
-
-				<hr>
-
-				<h4>Annual Checklist ({{annual_notificationsLength}})</h4>
-				<ul class="list-group">
-		   		<li class="list-group-item" ng-repeat="annual_notification in annual_notifications">
-		 				<input type="checkbox" id="chk1" name="chk1">
-		 				{{annual_notification.name}}
-		 			</li>
-	 			</ul>
-	 		</div>
+			<div class="panel panel-success">
+				<div class="panel-body">
+					Need maintenace help? Find plumbers, cleaners, handymen and more at <a href="http://www.handybook.com/">handybook.com</a>
+				</div>
+			</div>
 		</div>
+
+		<div class="col-md-5">
+		
+			<div class="panel panel-default">
+				<div class="panel-heading">
+		        <h3 class="panel-title">	         
+		         	<span class="glyphicon glyphicon-list-alt"></span>
+							To Do List
+						</h3>
+		    </div>
+		   	
+		   	<div class="panel-body">
+		   		<p>You are <strong>{{selectedProperty.completion_status}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
+
+		   		<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completion_status}}" aria-valuemin="0" aria-valuemax="100" style="width: {{selectedProperty.completion_status}}%;">
+					 	{{selectedProperty.completion_status}}%
+					  </div>
+					</div>
+
+					<hr>
+
+		   		<h4>Main Checklist ({{quarterly_notificationsLength}})</h4>
+					<ul class="list-group">
+		   			<li class="list-group-item" ng-repeat="quarterlynotification in quarterly_notifications">
+		   				<input type="checkbox" id="chk1" name="chk1">
+		   				{{quarterlynotification.name}}
+		   			</li>
+		   		</ul>
+		    
+		    	<hr>
+
+		   		<h4>Seasonal Checklists ({{presummer_notificationsLength + prewinter_notificationsLength}})</h4>
+		   		<ul class="nav nav-tabs">
+					  <li ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">
+					  	<a>Pre-Winter ({{presummer_notificationsLength}})</a>
+					  </li>
+					  <li ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">
+					  	<a>Pre-Summer ({{prewinter_notificationsLength}})</a>
+					  </li>
+					</ul>
+
+					<br>
+
+		    	<ul class="list-group" ng-if="selectedTab == 1">
+						<li class="list-group-item" ng-repeat="prewinterwarnings in prewinter_notifications">
+							<input type="checkbox" id="chk1" name="chk1">
+							{{prewinterwarnings.name}}
+						</li>
+					</ul>
+
+					<ul class="list-group" ng-if="selectedTab == 2">
+							<li class="list-group-item" ng-repeat="presummerwarnings in presummer_notifications">
+								<input type="checkbox" id="chk1" name="chk1">
+								{{presummerwarnings.name}}
+							</li>
+					</ul>
+
+					<hr>
+
+					<h4>Annual Checklist ({{annual_notificationsLength}})</h4>
+					<ul class="list-group">
+			   		<li class="list-group-item" ng-repeat="annual_notification in annual_notifications">
+			 				<input type="checkbox" id="chk1" name="chk1">
+			 				{{annual_notification.name}}
+			 			</li>
+		 			</ul>
+		 		</div>
+			</div>
+		</div>
+
 	</div>
-
 </div>
-
 <div ng-include=" 'views/dash/_addDocument_modal.html' ">
