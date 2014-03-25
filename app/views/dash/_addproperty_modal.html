@@ -8,10 +8,6 @@
       </div>
 
       <div class="modal-body">
-      	<h2>Whatever</h2>
-      </div>
-
-      <div class="modal-body" ng-if="promptNotifications == false">
       	<form class="form-horizontal">
       		<div class="form-group">
 		      	<label class="col-md-4 control-label">Property Name</label>
@@ -111,15 +107,10 @@
       </div>
 
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" ng-click="promptNotifications = true">
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
         	Add Property
         </button>
       </div>
 
-<!--       <div class="modal-footer">
-        <button type="submit" data-dismiss="modal" class="btn btn-primary">
-        	Add Property
-        </button>
-      </div> -->
   </div>
 </div>

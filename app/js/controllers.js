@@ -18,6 +18,12 @@ angular.module('myApp.controllers', [])
 
 .controller('dashCtrl', function($scope, $http, $location, $routeParams, buyReqs, ownReqs) {	
 
+	//Show Popover 
+
+	$scope.showPopover = function(){
+		$('#noticationStatus').popover();
+	};
+
 	//GRAB THE DATA DEPENDENCY INJECTIONS
 	$scope.ownReqs = ownReqs;
 
