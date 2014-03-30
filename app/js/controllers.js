@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers', ['firebase'])
 
 .controller('homeCtrl', function($scope, $location) {
 	$scope.newUser = true
@@ -16,7 +16,7 @@ angular.module('myApp.controllers', [])
 	}
 })
 
-.controller('dashCtrl', function($scope, $http, $location, $routeParams, buyReqs, ownReqs) {	
+.controller('dashCtrl', function($scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) {	
 
 	//Show Popover 
 
@@ -27,8 +27,11 @@ angular.module('myApp.controllers', [])
 	//GRAB THE DATA DEPENDENCY INJECTIONS
 	$scope.ownReqs = ownReqs;
 
-	$http.get('data/all_properties.json').success(function(data) {
-		$scope.all_properties = data;
+    var propertiesRef = new Firebase("https://housegeveity.firebaseio.com/properties");
+    $scope.all_properties = $firebase(propertiesRef);
+
+	// $http.get('data/all_properties.json').success(function(data) {
+	// 	$scope.all_properties = data;
 		$scope.all_propertiesLength = $scope.all_properties.length;
 
 		$scope.sumNotifications = 0;
@@ -41,7 +44,7 @@ angular.module('myApp.controllers', [])
 				console.log($scope.all_properties[i].notifications.length)
 		};
 
-	});
+	// });
 
 
 
