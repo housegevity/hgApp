@@ -27,7 +27,7 @@ angular.module('myApp.controllers', ['firebase'])
 	//GRAB THE DATA DEPENDENCY INJECTIONS
 	$scope.ownReqs = ownReqs;
 
-    var propertiesRef = new Firebase("https://housegeveity.firebaseio.com/properties");
+    var propertiesRef = new Firebase("https://housegevity.firebaseio.com/");
     $scope.all_properties = $firebase(propertiesRef);
 
 	// $http.get('data/all_properties.json').success(function(data) {
