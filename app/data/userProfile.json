@@ -1,0 +1,34 @@
+{
+	"name": "Alice Flaherty",
+	"id": 299312,
+	"annualNotificationsCompletionStatus": 
+		{
+			"1": true,			
+			"2": true,			
+			"3": false,
+			"4": false,
+			"5": true
+	},
+	"preSummerNotificationsCompletionStatus": 
+		{
+			"1": true,			
+			"2": true,			
+			"3": false
+		},
+	"prewinterNotificationsCompletionStatus": 
+		{
+			"1": true,			
+			"2": true,			
+			"3": false,
+			"4": false,
+			"5": false,
+			"6": false,
+			"7": true
+	},
+	"quarterlyNotificationsCompletionStatus": 
+		{
+			"1": true,			
+			"2": true,			
+			"3": false
+	},		
+}

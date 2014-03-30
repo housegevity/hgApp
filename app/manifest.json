@@ -1,0 +1,16 @@
+{
+  "name": "Housegevity Prototype",
+  "version": "0.1",
+  "icons": {"128": "128.png" },
+  "app": {
+    "urls": [
+      "http://www.housegevity.com/"
+  ],
+  "id": "kipkcgfkfkilmobclcoooabmikhndeoj",
+  "launch": {
+        "web_url": "http://www.housegevity.com/"
+      }
+  },
+  "permissions": [],
+  "manifest_version": 2
+}
