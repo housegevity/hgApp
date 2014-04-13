@@ -16,7 +16,7 @@ angular.module('myApp.controllers', ['firebase'])
 	}
 })
 
-.controller('dashCtrl', function($scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) {	
+.controller('dashCtrl', function($rootScope, $scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) {	
 
 	//Show Popover 
 
@@ -27,26 +27,11 @@ angular.module('myApp.controllers', ['firebase'])
 	//GRAB THE DATA DEPENDENCY INJECTIONS
 	$scope.ownReqs = ownReqs;
 
-    var propertiesRef = new Firebase("https://housegevity.firebaseio.com/");
+    var propertiesRef = new Firebase("https://housegevity.firebaseio.com/properties");
     $scope.all_properties = $firebase(propertiesRef);
+    propertiesRef.once('value', onDataLoad);
 
-	// $http.get('data/all_properties.json').success(function(data) {
-	// 	$scope.all_properties = data;
-		$scope.all_propertiesLength = $scope.all_properties.length;
-
-		$scope.sumNotifications = 0;
-
-		var sum=0;
-
-		for (var i = 0; i < $scope.all_properties.length; i+=1)
-			{
-				$scope.notificationsSum = $scope.all_properties[i].notifications.length
-				console.log($scope.all_properties[i].notifications.length)
-		};
-
-	// });
-
-
+	console.log($scope.all_properties);
 
 	//WATCH THE ROUTE, player
 	$scope.currentRoute = $location.url();
@@ -70,6 +55,18 @@ angular.module('myApp.controllers', ['firebase'])
 	$scope.data = {
 		selectedTab: 1
 	};
+
+    function onDataLoad(dataSnapshot) {
+    	$scope.all_properties = dataSnapshot.val();
+        $scope.notificationsSum = 0;
+
+        var sum = 0;
+
+        for (var i = 0; i < $scope.all_properties.length; i += 1) {
+            $scope.sum = $scope.all_properties[i].notifications.length
+            console.log($scope.all_properties[i].notifications.length)
+        };
+    }
 })
 
 .controller('propertyCtrl', function($scope, $location, $routeParams, $http, ownReqs, documents) {
