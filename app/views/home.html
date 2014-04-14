@@ -1,51 +1,24 @@
 <div class="row">
-	<div class="col-md-5 col-md-offset-1" style="padding-top: 30px;">
-		<img class="col-md-12 img-thumbnail" src="http://dfon12yb6dcdf.cloudfront.net/product/7m2jfblchbm24k6v9c1ogrbjvm/w1024x683.jpg?v=2">
-	</div>
+  <div class="col-md-5 col-md-offset-1" style="padding-top: 30px;">
+    <img class="col-md-12 img-thumbnail" src="http://dfon12yb6dcdf.cloudfront.net/product/7m2jfblchbm24k6v9c1ogrbjvm/w1024x683.jpg?v=2">
+  </div>
 
-	<div class="col-md-4">	
-		<h3>HouseGevity</h3>
-		<h3>The place to store your housing data and share with others</h3>
+  <div class="col-md-4">  
+    <h3>HouseGevity</h3>
+    <h3>The place to store your housing data and share with others</h3>
 
-		<hr>
-
-		<form role="form" ng-if="newUser">
-		  <div class="form-group">
-		    <label for="exampleInputEmail1">Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-		  </div>
-		  <div class="checkbox">
-		    <label>
-		      <input type="checkbox"> Yes I agree to the terms and conditions
-		    </label>
-		  </div>
-		  <button type="submit" class="btn btn-primary btn-block" ng-click="signUp()">
-		  	SIGN UP
-		  </button><br>
-		  <p>Already have an account? Sign in 
-		  	<a ng-click="signIn()">here</a>
-		  </p>
-		</form>
-
-		<form role="form" ng-if="!newUser">
-		  <div class="form-group">
-		    <label for="exampleInputEmail1">Account Name</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-		  </div>
-		  <button type="submit" class="btn btn-primary btn-block" ng-click="signUp()">
-		  	LOGIN
-		  </button><br>
-		  <p>Don't have an account? Sign up 
-		  	<a ng-click="signIn()">here</a>
-		  </p>
-		</form>
-	</div>		
+    <hr>
+    <form role="form" ng-show="!auth.user">
+      <button type="submit" class="btn btn-primary btn-block" ng-click="auth.$login('google')">
+        SIGN IN WITH GOOGLE
+      </button><br>
+    </form>
+    <div ng-if="auth.user">
+      <h3>Welcome back, {{ auth.user.displayName }}!</h3>
+      <a ng-href="#/dash" class="btn btn-success btn-block">
+        GO TO DASHBOARD
+      </a><br>
+      <a href="#" ng-click="auth.$logout()">Logout</a>
+    </div>
+  </div>    
 </div>
