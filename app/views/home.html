@@ -13,7 +13,7 @@
         SIGN IN WITH GOOGLE
       </button><br>
     </form>
-    <div ng-if="auth.user">
+    <div ng-show="auth.user">
       <h3>Welcome back, {{ auth.user.displayName }}!</h3>
       <a ng-href="#/dash" class="btn btn-success btn-block">
         GO TO DASHBOARD
