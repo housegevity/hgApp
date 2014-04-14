@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
+    //enable js-hint
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         connect: {
@@ -25,6 +27,20 @@ module.exports = function(grunt) {
                 options: {
                     reload: true
                 }
+            }
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
+            options: {
+                globalstrict: true,
+            },
+            options: {
+                reload: true
+            },
+            globals: {
+                jQuery: true,
+                $: true,
+                "angular": true
             }
         }
     });
