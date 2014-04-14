@@ -15,7 +15,7 @@
     </form>
     <div ng-if="auth.user">
       <h3>Welcome back, {{ auth.user.displayName }}!</h3>
-      <a ng-click="$location.path('/dash')" class="btn btn-success btn-block">
+      <a ng-href="#/dash" class="btn btn-success btn-block">
         GO TO DASHBOARD
       </a><br>
       <a href="#" ng-click="auth.$logout()">Logout</a>
