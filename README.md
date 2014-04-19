@@ -1,16 +1,15 @@
-# HouseGevity Prototype — Built in AngularJS using firebase and the Angular Seed project structure
+# HouseGevity Prototype
+## Built in AngularJS using firebase and the Angular Seed project structure
 
 This project is a prototype made for HouseGevity made by Joey Isaacson and protected under copyright.
 
 
 ## How to run locally
 
-* install node 'npm install'
-* if you do not have grunt installed run 'npm install -g grunt-cli'
-* run 'grunt serve'
+* scripts/web-server.js
 
-Then navigate your browser to `http://localhost:3000/app/index.html` to see the app running in
-your browser.
+
+Then navigate your browser to `http://localhost:8000/app/index.html` to see the app running in your browser.
 
 
 ### Running unit tests

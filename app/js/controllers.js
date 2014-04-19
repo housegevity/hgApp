@@ -72,10 +72,6 @@ angular.module('myApp.controllers', ['firebase'])
       $scope.selectedProperty = $scope.all_properties[$routeParams.propertyID - 1]
   });
 
-  // $http.get('data/properties/' + $routeParams.propertyID + '.json').success(function(data) {
-  //  $scope.properties = data;
-  // });
-
   $http.get('data/all_required_docs.json').success(function(data) {
       $scope.required_docs = data;
   });
