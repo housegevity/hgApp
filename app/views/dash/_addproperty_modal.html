@@ -4,43 +4,43 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Add a new property</h4>
+        <h3 class="modal-title text-center">Add a new property</h3>
       </div>
 
-      <div class="modal-body">
-      	<form class="form-horizontal">
+      <form class="form-horizontal" ng-submit="addNewProperty(property)">
+      	<div class="modal-body">
       		<div class="form-group">
-		      	<label class="col-md-4 control-label">Property Name</label>
-		      	<div class="col-md-8">
-		      		<input class="form-control" type="text" placeholder="enter name here"></input>
+		      	<label class="col-md-3 control-label col-md-offset-1">Property Name</label>
+		      	<div class="col-md-7">
+		      		<input class="form-control" type="text" placeholder="enter name here" name="property-name" ng-model="property.name" required></input>
 		      	</div>
 	      	</div>
 
 					<div class="form-group">
-		      	<label class="col-md-4 control-label">Address Line 1</label>
-		      	<div class="col-md-8">
-		      		<input class="form-control" type="text" placeholder=""></input>
+		      	<label class="col-md-3 control-label col-md-offset-1">Address Line 1</label>
+		      	<div class="col-md-7">
+		      		<input class="form-control" type="text" placeholder="" name="add1" ng-model="property.address1"></input>
 		      	</div>
 	      	</div>
 
 	      	<div class="form-group">
-		      	<label class="col-md-4 control-label">Address Line 2</label>
-		      	<div class="col-md-8">
-		      		<input class="form-control" type="text" placeholder=""></input>
+		      	<label class="col-md-3 control-label col-md-offset-1">Address Line 2</label>
+		      	<div class="col-md-7">
+		      		<input class="form-control" type="text" placeholder="" name="add2" ng-model="property.address2"></input>
 		      	</div>
 	      	</div>
 
 	      	<div class="form-group">
-		      	<label class="col-md-4 control-label">City</label>
-		      	<div class="col-md-8">
-		      		<input class="form-control" type="text" placeholder="enter city name here"></input>
+		      	<label class="col-md-3 control-label col-md-offset-1">City</label>
+		      	<div class="col-md-7">
+		      		<input class="form-control" type="text" placeholder="enter city name here" name="city" ng-model="property.city" required></input>
 		      	</div>
 	      	</div>
 
 	      	<div class="form-group">
-		      	<label class="col-md-4 control-label">State</label>
-		      	<div class="col-md-8">
-		      		<select name="state">
+		      	<label class="col-md-3 control-label col-md-offset-1">State</label>
+		      	<div class="col-md-7">
+		      		<select name="state" ng-model="property.state">
 								<option value="AL">Alabama</option>
 								<option value="AK">Alaska</option>
 								<option value="AZ">Arizona</option>
@@ -97,20 +97,19 @@
 	      	</div>
 
 	      	<div class="form-group">
-		      	<label class="col-md-4 control-label">ZIP</label>
-		      	<div class="col-md-8">
-		      		<input class="form-control" type="text" placeholder="enter ZIP Code here"></input>
+		      	<label class="col-md-3 control-label col-md-offset-1">ZIP</label>
+		      	<div class="col-md-7">
+		      		<input class="form-control" type="text" placeholder="enter ZIP Code here" name="zip" ng-model="property.zip"></input>
 		      	</div>
 	      	</div>
-
-      	</form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
-        	Add Property
-        </button>
-      </div>
+	      </div>
+      	
+	      <div class="modal-footer">
+	        <button type="submit" class="btn btn-primary">
+	        	Add Property
+	        </button>
+	      </div>
+	    </form>
 
   </div>
 </div>

@@ -18,22 +18,12 @@ module.exports = function(grunt) {
                     spawn: false,
                 }
             },
-            src: {
-                files: ['app/views/**/*.html', 'app/index.html']
-            },
             configFiles: {
                 files: ['Gruntfile.js'],
                 options: {
                     reload: true
                 }
             },
-            styles: {
-                files: ['app/style/less/**'],
-                tasks: ['less'],
-                options: {
-                    nospawn: true
-                }
-            }
         },
         jshint: {
             all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
@@ -64,11 +54,10 @@ module.exports = function(grunt) {
         }
     });
     // load task dependencies
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     // define tasks
-    grunt.registerTask('start', [
+    grunt.registerTask('serve', [
         'connect',
         'watch'
     ]);

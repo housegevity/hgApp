@@ -33,9 +33,23 @@ angular.module('myApp.controllers', ['firebase'])
       $('#buyCheck').modal('show');
   }
 
-  $scope.addmyProperty = function() {
+  $scope.addNewPropertyModal = function() {
       $('#addProperty').modal('show');
   }
+
+  $scope.addNewProperty = function(inputData) {
+  	$('#addProperty').modal('hide');
+  	$('#new_property_onboard').modal('show');
+  	$scope.newPropertyData = inputData;
+  	console.log($scope.newPropertyData);
+  	$scope.StepOne = true;
+  };
+
+  $scope.uploadOnboardDocuments = function(inputData) {
+  	$scope.newDocData = inputData;
+  	console.log($scope.newDocData);
+  	$scope.StepOne = false;
+  };
 
   $scope.buyChecklist = function(property) {
       $scope.switchit = 2;
