@@ -3404,6 +3404,13 @@ fieldset[disabled] .btn-vk.active {
 }
 
 /* BOOTSTRAP OVERRIDES */
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0;
+  border: 1px solid transparent;
+}
+
 .panel-default>.panel-heading {
   background-color: #fff;
 }
@@ -3426,4 +3433,18 @@ fieldset[disabled] .btn-vk.active {
   -webkit-box-shadow: none;
   box-shadow: none;
   outline: 0;
+}
+
+.brand-logo {
+  height: 100%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.navbar-brand {
+  padding: 12px 15px 15px 15px;
+}
+
+.login-form {
+  padding: 15px 0 25px 0;
 }
