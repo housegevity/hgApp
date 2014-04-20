@@ -1,20 +1,19 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
-    //enable js-hint
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    // config
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         connect: {
             server: {
                 options: {
-                    port: 3000,
+                    port: 5555,
                     base: 'app'
                 }
             }
         },
         watch: {
             scripts: {
-                files: ['app/js/**/*.js'],
+                files: ['app/js/**.js'],
                 options: {
                     spawn: false,
                 }
@@ -26,6 +25,13 @@ module.exports = function(grunt) {
                 files: ['Gruntfile.js'],
                 options: {
                     reload: true
+                }
+            },
+            styles: {
+                files: ['app/style/less/**'],
+                tasks: ['less'],
+                options: {
+                    nospawn: true
                 }
             }
         },
@@ -42,10 +48,31 @@ module.exports = function(grunt) {
                 $: true,
                 "angular": true
             }
+        },
+        less: {
+          development: {
+            options: {
+              compress: true,
+              yuicompress: true,
+              optimization: 2
+            },
+            files: {
+              // target.css file: source.less file
+              'app/style/css/bootstrap.css': 'app/style/less/bootstrap.less'
+            }
+          }
         }
     });
-    grunt.registerTask('serve', [
+    // load task dependencies
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    // define tasks
+    grunt.registerTask('start', [
         'connect',
         'watch'
+    ]);
+    grunt.registerTask('fun', [
+        'jshint'
     ]);
 };

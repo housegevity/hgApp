@@ -25,7 +25,6 @@ angular.module('myApp.controllers', ['firebase'])
   $scope.all_properties = $firebase(propertiesRef);
   propertiesRef.once('value', onDataLoad);
 
-
   //WATCH THE ROUTE, player
   $scope.currentRoute = $location.url();
   $scope.propertyID = $routeParams.propertyID;
@@ -65,7 +64,6 @@ angular.module('myApp.controllers', ['firebase'])
   $scope.ownReqs = ownReqs;
 
   //GRAB THE NESCESSARY JSON DATA
-
   $http.get('data/all_properties.json').success(function(data) {
       $scope.all_properties = data;
       $scope.all_propertiesLength = $scope.all_properties.length;
@@ -97,7 +95,6 @@ angular.module('myApp.controllers', ['firebase'])
   });
 
   //UI CONTROLS
-
   $scope.selectedTab = 1;
   $scope.selectedDocID = null;    
   
@@ -109,8 +106,4 @@ angular.module('myApp.controllers', ['firebase'])
   $scope.addDocument = function() {
       $('#documentModal').modal('show');
   }
-})
-
-.controller('settingCtrl', function($scope, $location) {
-    console.log('settings controller seperated')
 })

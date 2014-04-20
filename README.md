@@ -6,10 +6,11 @@ This project is a prototype made for HouseGevity made by Joey Isaacson and prote
 
 ## How to run locally
 
-* scripts/web-server.js
+* 'npm install'
+* if you do not have grunt installed already run 'npm install -g grunt-cli
+* 'grunt serve'
 
-
-Then navigate your browser to `http://localhost:8000/app/index.html` to see the app running in your browser.
+Then navigate your browser to `http://localhost:5555/home` and be prepared to be amazed
 
 
 ### Running unit tests
