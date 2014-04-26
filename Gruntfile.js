@@ -27,17 +27,14 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
-            options: {
                 globalstrict: true,
-            },
-            options: {
-                reload: true
-            },
-            globals: {
-                jQuery: true,
-                $: true,
-                "angular": true
-            }
+                browser: true,
+                devel: true,
+                globals: {
+                    jQuery: true,
+                    $: true,
+                    "angular": true,
+                },
         },
         less: {
           development: {
