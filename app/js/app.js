@@ -13,10 +13,10 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   
   $routeProvider.when('/home',
-  	{
-  		templateUrl: 'views/home.html',
-  		controller: 'homeCtrl'
-  	}
+    {
+      templateUrl: 'views/home.html',
+      controller: 'homeCtrl'
+    }
   ).
   when('/dash',
     {

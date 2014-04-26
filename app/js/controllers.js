@@ -38,17 +38,17 @@ angular.module('myApp.controllers', ['firebase'])
   }
 
   $scope.addNewProperty = function(inputData) {
-  	$('#addProperty').modal('hide');
-  	$('#new_property_onboard').modal('show');
-  	$scope.newPropertyData = inputData;
-  	console.log($scope.newPropertyData);
-  	$scope.StepOne = true;
+    $('#addProperty').modal('hide');
+    $('#new_property_onboard').modal('show');
+    $scope.newPropertyData = inputData;
+    console.log($scope.newPropertyData);
+    $scope.StepOne = true;
   };
 
   $scope.uploadOnboardDocuments = function(inputData) {
-  	$scope.newDocData = inputData;
-  	console.log($scope.newDocData);
-  	$scope.StepOne = false;
+    $scope.newDocData = inputData;
+    console.log($scope.newDocData);
+    $scope.StepOne = false;
   };
 
   $scope.buyChecklist = function(property) {
@@ -63,7 +63,7 @@ angular.module('myApp.controllers', ['firebase'])
   };
 
   function onDataLoad(dataSnapshot) {
-  	$scope.all_properties = dataSnapshot.val();
+    $scope.all_properties = dataSnapshot.val();
 
     for (var i = 0; i < $scope.all_properties.length; i += 1) {
         $scope.sum = $scope.all_properties[i].notifications.length;
