@@ -8,14 +8,16 @@ angular.module('myApp', [
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
-  'myApp.controllers'
+  'myApp.dashCtrl',
+  'myApp.loginCtrl',
+  'myApp.propertyCtrl'
 ]).
 config(['$routeProvider', function($routeProvider) {
   
   $routeProvider.when('/home',
     {
       templateUrl: 'views/home.html',
-      controller: 'homeCtrl'
+      controller: 'loginCtrl'
     }
   ).
   when('/dash',
@@ -30,12 +32,7 @@ config(['$routeProvider', function($routeProvider) {
       controller: 'propertyCtrl'
     }
   ).
-  when('/dash/settings', 
-    {
-      templateUrl: 'views/dash/settings.html', 
-      controller: 'settingCtrl'
-    }
-  ).otherwise(
+  otherwise(
     {
       redirectTo: '/home'
     }
