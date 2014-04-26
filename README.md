@@ -7,8 +7,9 @@ This project is a prototype made for HouseGevity made by Joey Isaacson and prote
 ## How to run locally
 
 * 'npm install'
-* if you do not have grunt installed already run 'npm install -g grunt-cli
+* if you do not have grunt installed already run 'npm install -g grunt-cli'
 * 'grunt serve'
+* once you are up and running you can run 'grunt fun'
 
 Then navigate your browser to `http://localhost:5555/home` and be prepared to be amazed
 
