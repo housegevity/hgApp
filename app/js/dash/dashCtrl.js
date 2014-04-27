@@ -4,7 +4,7 @@
 var FIREBASE_URL = "https://housegevity.firebaseio.com/";
 var REF = new Firebase(FIREBASE_URL);
 
-angular.module('myApp.dashCtrl', ['firebase'])
+angular.module('hgApp.dashCtrl', ['firebase'])
 
 .controller('dashCtrl', function ($rootScope, $scope, $firebase, $firebaseSimpleLogin, $http, $location, $routeParams, buyReqs, ownReqs) { 
   $scope.auth = $firebaseSimpleLogin(REF);
