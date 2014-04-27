@@ -2,17 +2,17 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+angular.module('hgApp', [
   'ngRoute',
   'firebase',
-  'myApp.config',
-  'waitForAuth', // This is used for showing login button or not
+  'hgApp.config',
+  'waitForAuth', - Enable this later if you want to hide login button
   'authSecurity',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.dashCtrl',
-  'myApp.propertyCtrl'
+  'hgApp.filters',
+  'hgApp.services',
+  'hgApp.directives',
+  'hgApp.dashCtrl',
+  'hgApp.propertyCtrl'
 ]).
 config(['$routeProvider', function ($routeProvider) {
   

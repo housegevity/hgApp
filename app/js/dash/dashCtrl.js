@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.dashCtrl', ['firebase'])
+angular.module('hgApp.dashCtrl', ['firebase'])
 
 .controller('dashCtrl', function ($rootScope, $scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) { 
   //Show Popover 

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('myApp.services', ['myApp.service.login', 'myApp.service.firebase'])
+  angular.module('hgApp.services', ['hgApp.service.login', 'hgApp.service.firebase'])
 
   .factory('documents', function () {
 
