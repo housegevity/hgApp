@@ -2,7 +2,7 @@
 
 angular.module('myApp.dashCtrl', ['firebase'])
 
-.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, buyReqs, ownReqs) { 
+.controller('dashCtrl', function ($rootScope, $scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) { 
   //Show Popover 
   $scope.showPopover = function(){
       $('#noticationStatus').popover();
