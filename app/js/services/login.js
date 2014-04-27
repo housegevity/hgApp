@@ -10,18 +10,12 @@ angular.module('hgApp.service.login', ['firebase', 'hgApp.service.firebase'])
         },
 
         /**
-         * @param {string} email
-         * @param {string} pass
          * @param {Function} [callback]
          * @returns {*}
          */
-        login: function (email, pass, callback) {
+        login: function (callback) {
           assertAuth();
-          auth.$login('password', {
-            email: email,
-            password: pass,
-            rememberMe: true
-          }).then(function (user) {
+          auth.$login('google').then(function (user) {
             if (callback) {
               //todo-bug https://github.com/firebase/angularFire/issues/199
               $timeout(function () {

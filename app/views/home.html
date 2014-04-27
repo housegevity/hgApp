@@ -11,11 +11,11 @@
           <p>The place to store your housing data and share with others</p>
           <div class="login-form">
             <form role="form" ng-show="!auth.user">
-              <button type="submit" class="btn btn-primary" ng-click="auth.$login('google')">
+              <a href ng-show-auth="logout,error" type="submit" class="btn btn-primary" ng-click="auth.$login('google')">
                 Sign in with Google
-              </button><br>
+              </a><br>
             </form>
-            <div ng-show="auth.user">
+            <div ng-show-auth="login">
               <h3>Welcome back, {{ auth.user.displayName }}!</h3>
               <a ng-href="#/dash" class="btn btn-success">
                 Go to your dashboard

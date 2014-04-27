@@ -1,14 +1,8 @@
 'use strict';
 
-/* Controllers */
-var FIREBASE_URL = "https://housegevity.firebaseio.com/";
-var REF = new Firebase(FIREBASE_URL);
-
 angular.module('hgApp.dashCtrl', ['firebase'])
 
-.controller('dashCtrl', function ($rootScope, $scope, $firebase, $firebaseSimpleLogin, $http, $location, $routeParams, buyReqs, ownReqs) { 
-  $scope.auth = $firebaseSimpleLogin(REF);
-
+.controller('dashCtrl', function ($rootScope, $scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) { 
   //Show Popover 
   $scope.showPopover = function(){
       $('#noticationStatus').popover();
