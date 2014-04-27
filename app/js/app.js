@@ -5,6 +5,9 @@
 angular.module('myApp', [
   'ngRoute',
   'firebase',
+  'myApp.config',
+  // 'waitForAuth', - Enable this later if you want to hide login button
+  'authSecurity',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -22,12 +25,14 @@ config(['$routeProvider', function($routeProvider) {
   ).
   when('/dash',
     {
+      authRequired: true, // must authenticate before viewing this page
       templateUrl: 'views/dash/dashboard.html',
       controller: 'dashCtrl'
     }
   ).
   when('/property/:propertyID', 
     {
+      authRequired: true, // must authenticate before viewing this page
       templateUrl: 'views/dash/property.html',
       controller: 'propertyCtrl'
     }
