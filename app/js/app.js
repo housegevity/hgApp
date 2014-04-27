@@ -6,21 +6,20 @@ angular.module('myApp', [
   'ngRoute',
   'firebase',
   'myApp.config',
-  // 'waitForAuth', - Enable this later if you want to hide login button
+  'waitForAuth', // This is used for showing login button or not
   'authSecurity',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
   'myApp.dashCtrl',
-  'myApp.loginCtrl',
   'myApp.propertyCtrl'
 ]).
-config(['$routeProvider', function($routeProvider) {
+config(['$routeProvider', function ($routeProvider) {
   
-  $routeProvider.when('/home',
+  $routeProvider.
+  when('/home',
     {
-      templateUrl: 'views/home.html',
-      controller: 'loginCtrl'
+      templateUrl: 'views/home.html'
     }
   ).
   when('/dash',
@@ -43,4 +42,10 @@ config(['$routeProvider', function($routeProvider) {
     }
   );
 
+}])
+
+.run(['loginService', '$rootScope', 'FBURL', function (loginService, $rootScope, FBURL) {
+  // establish authentication
+  $rootScope.auth = loginService.init();
+  $rootScope.FBURL = FBURL;
 }]);

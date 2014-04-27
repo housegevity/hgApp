@@ -80,7 +80,7 @@
             this._redirect(path);
          }
          else if( this._authenticated && this._location.path() === this._loginPath ) {
-            this._redirect('/');
+            this._redirect('/home');
          }
       }
    };

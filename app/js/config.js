@@ -4,7 +4,7 @@
 angular.module('myApp.config', [])
    .constant('version', '0.1')
 
-   // where to redirect users if they need to authenticate (see module.routeSecurity)
+   // where to redirect users if they need to authenticate
    .constant('loginRedirectPath', '/home')
 
    // your Firebase URL goes here

@@ -1,9 +1,6 @@
 'use strict';
 
 /* Controllers */
-var FIREBASE_URL = "https://housegevity.firebaseio.com/";
-var REF = new Firebase(FIREBASE_URL);
-
 angular.module('myApp.propertyCtrl', ['firebase'])
 
 .controller('propertyCtrl', function($scope, $location, $routeParams, $http, ownReqs, documents) {
