@@ -6,7 +6,7 @@ angular.module('hgApp', [
   'ngRoute',
   'firebase',
   'hgApp.config',
-  'waitForAuth', - Enable this later if you want to hide login button
+  'waitForAuth',
   'authSecurity',
   'hgApp.filters',
   'hgApp.services',
