@@ -5,12 +5,14 @@
 angular.module('hgApp', [
   'ngRoute',
   'firebase',
-  'hgApp.config',
-  'waitForAuth', - Enable this later if you want to hide login button
+  'google',
+  'waitForAuth',
   'authSecurity',
+  'hgApp.config',
   'hgApp.filters',
   'hgApp.services',
   'hgApp.directives',
+  'hgApp.loginCtrl',
   'hgApp.dashCtrl',
   'hgApp.propertyCtrl'
 ]).
@@ -19,7 +21,8 @@ config(['$routeProvider', function ($routeProvider) {
   $routeProvider.
   when('/home',
     {
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      controller: 'loginCtrl'
     }
   ).
   when('/dash',
@@ -44,6 +47,12 @@ config(['$routeProvider', function ($routeProvider) {
 
 }])
 
+// Configure Google APIs
+.config(['googleApiProvider', 'GAPIKEY', function (googleApiProvider, GAPIKEY) {
+  googleApiProvider.configure(GAPIKEY);
+}])
+
+// Configure the Firebase authentication
 .run(['loginService', '$rootScope', 'FBURL', function (loginService, $rootScope, FBURL) {
   // establish authentication
   $rootScope.auth = loginService.init();

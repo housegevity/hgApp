@@ -10,10 +10,10 @@
         <div class="col-md-8 col-md-offset-2">
           <p>The place to store your housing data and share with others</p>
           <div class="login-form">
-            <form role="form" ng-show="!auth.user">
-              <a href ng-show-auth="logout,error" type="submit" class="btn btn-primary" ng-click="auth.$login('google')">
+            <form role="form" ng-show-auth="logout,error">
+              <button type="submit" class="btn btn-primary" ng-click="login()">
                 Sign in with Google
-              </a><br>
+              </button><br>
             </form>
             <div ng-show-auth="login">
               <h3>Welcome back, {{ auth.user.displayName }}!</h3>

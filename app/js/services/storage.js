@@ -1,0 +1,1 @@
+angular.module('hgApp.service.storage', ['google']);
