@@ -1,1 +1,4 @@
-angular.module('hgApp.service.storage', ['google']);
+angular.module('hgApp.service.storage', ['google'])
+  .factory('storageService', ['googleApi', function (googleApi) {
+    
+  }]);

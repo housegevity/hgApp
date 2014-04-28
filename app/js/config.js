@@ -14,5 +14,8 @@ angular.module('hgApp.config', [])
    // Google API Key for Cloud Storage
    .constant('GAPIKEY', 'AIzaSyA2e2UnfJfZz7Cb4pbaU8FMzmwy9te_z60')
 
+   // Google Storage version
+   .constant('storage', 'v1beta2')
+
    // Google scopes
    .constant("scope", 'https://www.googleapis.com/auth/devstorage.read_write');

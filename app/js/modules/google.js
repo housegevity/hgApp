@@ -22,4 +22,22 @@ angular.module('google', [])
         }
       };
     };
-  });
+  })
+  
+  .service("googleStorage", ['$rootScope',
+    function GoogleStorage($rootScope) {
+      return {
+        get: function () {
+
+        },
+
+        put: function () {
+
+        },
+
+        remove: function () {
+
+        }
+      };
+    }
+  ]);
