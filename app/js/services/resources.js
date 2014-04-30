@@ -1,7 +1,7 @@
 /* global angular*/
 angular.module('hgApp.service.resources', ['firebase', 'hgApp.service.firebase'])
-  .factory('propertyManager', ['repository',
-    function (repository) {
+  .factory('propertyManager', ['repository', 'storage',
+    function (repository, storage) {
       var collection = 'properties';
       return {
         /**
@@ -27,14 +27,10 @@ angular.module('hgApp.service.resources', ['firebase', 'hgApp.service.firebase']
       };
     }
   ])
-  .factory('documentManager', ['repository', 'storage',
-    function (repository, storage) {
+  .factory('documentManager', ['$log', 'repository', 'storage',
+    function ($log, repository, storage) {
       var collection = 'documents';
       return {
-        /**
-         * Upload a document to cloud storage.
-         *
-         */
         upload: function (documentObj, callback) {
 
         }

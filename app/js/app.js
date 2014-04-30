@@ -5,15 +5,17 @@
 angular.module('hgApp', [
   'ngRoute',
   'firebase',
-  'google',
   'waitForAuth',
   'authSecurity',
+  'angularFileUpload',
+  's3.storage',
   'hgApp.config',
   'hgApp.filters',
   'hgApp.services',
   'hgApp.directives',
   'hgApp.loginCtrl',
   'hgApp.dashCtrl',
+  'hgApp.docCtrl',
   'hgApp.propertyCtrl'
 ]).
 config(['$routeProvider', function ($routeProvider) {
@@ -32,6 +34,13 @@ config(['$routeProvider', function ($routeProvider) {
       controller: 'dashCtrl'
     }
   ).
+  when('/docs',
+    {
+      authRequired: true,
+      templateUrl: 'views/docs/upload.html',
+      controller: 'docCtrl'  
+    }
+  ).
   when('/property/:propertyID', 
     {
       authRequired: true, // must authenticate before viewing this page
@@ -45,11 +54,6 @@ config(['$routeProvider', function ($routeProvider) {
     }
   );
 
-}])
-
-// Configure Google APIs
-.config(['googleApiProvider', 'GAPIKEY', function (googleApiProvider, GAPIKEY) {
-  googleApiProvider.configure(GAPIKEY);
 }])
 
 // Configure the Firebase authentication

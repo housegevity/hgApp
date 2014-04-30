@@ -4,7 +4,6 @@
   angular.module('hgApp.services', [
     'hgApp.service.login',
     'hgApp.service.firebase',
-    'hgApp.service.storage',
     'hgApp.service.resources'
   ])
 
