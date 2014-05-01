@@ -8,7 +8,7 @@ angular.module('hgApp', [
   'waitForAuth',
   'authSecurity',
   'angularFileUpload',
-  's3.storage',
+  'angular-gapi',
   'hgApp.config',
   'hgApp.filters',
   'hgApp.services',
@@ -55,6 +55,15 @@ config(['$routeProvider', function ($routeProvider) {
   );
 
 }])
+// Configure Google APIs
+.config(function (GAPIProvider, GAPIKEY) {
+  var handleClientLoad = function ($window) {
+    gapi.client.setApiKey(GAPIKEY);
+    gapi.auth.init(function () {});
+  };
+
+  GAPIProvider.setInitFunction(handleClientLoad);
+})
 
 // Configure the Firebase authentication
 .run(['loginService', '$rootScope', 'FBURL', function (loginService, $rootScope, FBURL) {

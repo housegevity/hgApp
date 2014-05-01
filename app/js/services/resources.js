@@ -1,7 +1,7 @@
 /* global angular*/
-angular.module('hgApp.service.resources', ['firebase', 'hgApp.service.firebase'])
-  .factory('propertyManager', ['repository', 'storage',
-    function (repository, storage) {
+angular.module('hgApp.service.resources', ['firebase'])
+  .factory('propertyManager', ['repository', 'gapi',
+    function (repository, gapi) {
       var collection = 'properties';
       return {
         /**
@@ -27,12 +27,23 @@ angular.module('hgApp.service.resources', ['firebase', 'hgApp.service.firebase']
       };
     }
   ])
-  .factory('documentManager', ['$log', 'repository', 'storage',
-    function ($log, repository, storage) {
+  .factory('documentManager', ['$log', 'repository',
+    function ($log, repository) {
       var collection = 'documents';
       return {
-        upload: function (documentObj, callback) {
-
+        upload: function (user, file, callback) {
+          AWS.config.credentials.get();
+          var s3 = new AWS.S3({apiVersion: '2006-03-01'});
+          s3.putObject({
+            Bucket: 'housegevity-docs', 
+            Key: file.name,
+            ContentType: file.type,
+            Body: file,
+            ACL: 'private'
+          }, function (err, data) {
+            $log.info(err);
+            $log.info(data);
+          });
         }
       };
     }

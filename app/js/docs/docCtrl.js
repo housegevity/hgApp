@@ -9,5 +9,6 @@ angular.module('hgApp.docCtrl', ['hgApp.service.resources'])
     var file = $files[0];
     file.progress = parseInt(0);
     $log.info(file);
+    documentManager.upload(user, file);
   }
 }]);
