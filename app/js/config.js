@@ -8,7 +8,6 @@ angular.module('hgApp.config', [])
    .constant('loginRedirectPath', '/home')
 
    // your Firebase URL goes here
-   // .constant('FBURL', 'https://housegevity.firebaseio.com')
    .constant('FBURL', 'https://housegevity.firebaseio.com')
 
    // Google API Key for Cloud Storage
