@@ -26,10 +26,7 @@ module.exports = function(grunt) {
             },
         },
         jshint: {
-            all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
-                globalstrict: true,
-                browser: true,
-                devel: true,
+            all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js', 'app/js/**/*.js'],
                 globals: {
                     jQuery: true,
                     $: true,
