@@ -8,8 +8,9 @@ angular.module('hgApp.loginCtrl', [])
     loginService.login(function (err, user) {
       $scope.err = err ? err + '' : null;
       if (!err) {
-        loginService.createProfile(user.uid, user.email);
+        loginService.createProfile(user.id, user.email);
 
+        // TODO Pull out somewhere else and create an S3 bucket for the user
         AWS.config.credentials = new AWS.WebIdentityCredentials({
           RoleArn: 'arn:aws:iam::281759738925:role/google-auth',
           ProviderId: null,
@@ -18,8 +19,6 @@ angular.module('hgApp.loginCtrl', [])
       } else {
         $log.error(err);
       }
-
-
     });
   };
 });
