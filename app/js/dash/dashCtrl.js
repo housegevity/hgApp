@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('hgApp.dashCtrl', ['firebase'])
+angular.module('hgApp.dashCtrl', [])
 
-.controller('dashCtrl', function ($rootScope, $scope, $firebase, $http, $location, $routeParams, buyReqs, ownReqs) { 
+.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, propertyManager, buyReqs, ownReqs) { 
+  var user = $rootScope.auth.user;
+
   //Show Popover 
   $scope.showPopover = function(){
       $('#noticationStatus').popover();
@@ -11,9 +13,12 @@ angular.module('hgApp.dashCtrl', ['firebase'])
   //GRAB THE DATA DEPENDENCY INJECTIONS
   $scope.ownReqs = ownReqs;
 
-  var propertiesRef = new Firebase("https://housegevity.firebaseio.com/properties");
-  $scope.all_properties = $firebase(propertiesRef);
-  propertiesRef.once('value', onDataLoad);
+  $scope.allProperties = propertyManager.list();
+
+  for (var i = 0; i < $scope.allProperties.length; i += 1) {
+    $scope.sum = $scope.allProperties[i].notifications.length;
+    console.log($scope.sum);
+  };
 
   //WATCH THE ROUTE, player
   $scope.currentRoute = $location.url();
@@ -31,6 +36,8 @@ angular.module('hgApp.dashCtrl', ['firebase'])
     $('#addProperty').modal('hide');
     $('#new_property_onboard').modal('show');
     $scope.newPropertyData = inputData;
+    propertyManager.save(inputData);
+
     console.log($scope.newPropertyData);
     $scope.StepOne = true;
   };
@@ -51,13 +58,4 @@ angular.module('hgApp.dashCtrl', ['firebase'])
   $scope.data = {
       selectedTab: 1
   };
-
-  function onDataLoad(dataSnapshot) {
-    $scope.all_properties = dataSnapshot.val();
-
-    for (var i = 0; i < $scope.all_properties.length; i += 1) {
-        $scope.sum = $scope.all_properties[i].notifications.length;
-        console.log($scope.sum);
-    };
-  }
 });

@@ -12,7 +12,7 @@ angular.module('hgApp.service.firebase', ['firebase'])
        */
       return function (path) {
         return new Firebase(pathRef([FBURL].concat(Array.prototype.slice.call(arguments))));
-      }
+      };
     }
   ])
 
@@ -30,9 +30,40 @@ angular.module('hgApp.service.firebase', ['firebase'])
         var ref = firebaseRef(path);
         limit && (ref = ref.limit(limit));
         return $firebase(ref);
-      }
+      };
     }
-  ]);
+  ])
+
+  .service('repository', ['$rootScope', 'firebaseRef', 'syncData',
+    function ($rootScope, firebaseRef, syncData) {
+      var userId = $rootScope.auth.user.uid;
+      return {
+        /**
+         * Retrieve a list of specified resources for the logged in user.
+         *
+         * @param {string} userId The logged in user's id.         
+         * @param {string} collection The name of the resource collection
+         * @param {int} [limit] Optional. The maximum properties to return.
+         * @returns A list of resource objects
+         */
+        list: function (collection, limit) {
+          return syncData(['users', userId, collection], limit);
+        },
+
+        /**
+         * Save a new resource for the logged in user.
+         *
+         * @param {string} userId The logged in user's id
+         * @param {string} collection The name of the resource collection
+         * @param {Object} resourceObj The new resource object
+         * @param {Function} [callback] Optional callback after completion.
+         * @returns {string} the unique id of the new resource
+         */
+        save: function (collection, resourceObj, callback) {
+          return firebaseRef(['users', userId, collection]).push(resourceObj, callback);
+        }
+      };
+    }]);
 
 function pathRef(args) {
   for (var i = 0; i < args.length; i++) {
