@@ -36,10 +36,11 @@ angular.module('hgApp.service.resources', ['firebase', 'angular-gapi'])
           var s3 = new AWS.S3({apiVersion: '2006-03-01'});
           s3.putObject({
             Bucket: 'housegevity-docs', 
-            Key: file.name,
+            Key: [user.id, file.name].join('/'),
             ContentType: file.type,
             Body: file,
-            ACL: 'private'
+            ACL: 'private',
+            ServerSideEncryption: 'AES256'
           }, function (err, data) {
             $log.info(err);
             $log.info(data);
