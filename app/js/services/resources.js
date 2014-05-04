@@ -1,7 +1,7 @@
 /* global angular*/
-angular.module('hgApp.service.resources', ['firebase'])
-  .factory('propertyManager', ['repository', 'gapi',
-    function (repository, gapi) {
+angular.module('hgApp.service.resources', ['firebase', 'angular-gapi'])
+  .factory('propertyManager', ['repository',
+    function (repository) {
       var collection = 'properties';
       return {
         /**
