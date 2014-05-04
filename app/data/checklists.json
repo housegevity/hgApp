@@ -1,0 +1,101 @@
+{
+    "0": {
+        "name": "main-checklist",
+        "display-name": "Main Checklist",
+        "frequency": "4",
+        "onboard-req": true,
+        "tasks": {
+            "0": {
+                "name": "Clean Dryer Vent Monthly",
+                "description": ""
+            },
+            "1": {
+                "name": "Change HVAC Filters Every 3 Months",
+                "description": ""
+            },
+            "2": {
+                "name": "Monthly Landscaping Service",
+                "description": ""
+            }
+        }
+    },
+    "1": {
+        "name": "pre-winter",
+        "display-name": "Pre-Winter",
+        "frequency": "1",
+        "onboard-req": false,
+        "tasks": {
+            "0": {
+                "name": "Check that drains are working correctly around the property",
+                "description": ""
+            },
+            "1": {
+                "name": "Have roof inspected for leaks and insulation",
+                "description": ""
+            },
+            "2": {
+                "name": "Have windows resealed and caulked",
+                "description": ""
+            },
+            "3": {
+                "name": "Cut away branches of trees that hang over the house",
+                "description": ""
+            },
+            "4": {
+                "name": "Check all plumbing for leaks",
+                "description": ""
+            },
+            "5": {
+                "name": "Fireplace inspection and cleaning",
+                "description": ""
+            },
+            "6": {
+                "name": "Check to ensure that the HVAC and ducts are working",
+                "description": ""
+            }
+        }
+    },
+    "2": {  
+        "name": "Pre-Summer",
+        "frequency": "1", 
+        "onboard-req": false,
+        "tasks": {
+            "0": {
+                "name": "Check that AC and ducts are working",
+                "description": ""
+            },
+            "1": {
+                "name": "Clear all flammable debris form property",
+                "description": ""
+            },
+            "2": {
+                "name": "Cut down tall brush over two feet",
+                "description": ""
+            }
+        }
+    },
+    "3": {
+        "name": "annual-checklist",
+        "display-name": "Annual Checklist",
+        "frequency": "1",
+        "onboard-req": false,
+        "tasks": {
+            "0": {
+                "name": "Check sinks, toilets, faucets, and underlying areas for leaks",
+                "description": ""
+            },
+            "1": {
+                "name": "Check Water Heater functionality",
+                "description": ""
+            },
+            "2": {
+                "name": "Clean out HVAC Ducting",
+                "description": ""
+            },
+            "3": {
+                "name": "Check Sewage Systems",
+                "description"
+            }
+        }
+    }
+}
