@@ -9,6 +9,7 @@ angular.module('hgApp', [
   'authSecurity',
   'angularFileUpload',
   'angular-gapi',
+  'mgo-angular-wizard',
   'hgApp.config',
   'hgApp.filters',
   'hgApp.services',
