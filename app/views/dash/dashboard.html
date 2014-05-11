@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h3 class="pull-left dashboard-header">
-				My Properties ({{ allProperties.length }})
+				My Properties ({{ allProperties.length || 0 }})
 			</h3>
 		</div>
 		<div class="col-md-6">
@@ -70,8 +70,8 @@
 	<hr>
 
 	<h3 class="text-center">
-		<span ng-show="allProperties.length > 0">Need to add another property? Click</span> 
-		<span ng-show="allProperties.length === 0">You don't have any properties yet! Let's add one </span> 
+		<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
+		<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
 		<a ng-click="addNewPropertyModal()">here</a>
 	</h3>
 
