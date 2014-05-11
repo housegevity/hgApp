@@ -45,7 +45,6 @@ angular.module('hgApp', [
       controller: 'propertyCtrl'
     })
 })
-
 // Configure Google APIs
 .config(function (GAPIProvider, GAPIKEY) {
   var handleClientLoad = function ($window) {
