@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Declare app level module which depends on filters, and services
 angular.module('hgApp', [
   'ngRoute',
@@ -47,36 +46,6 @@ angular.module('hgApp', [
     })
 })
 
-// config(['$routeProvider', function ($routeProvider, $stateProvider) {
-//   ).
-//   when('/dash',
-//     {
-//       authRequired: true, // must authenticate before viewing this page
-//       templateUrl: 'views/dash/dashboard.html',
-//       controller: 'dashCtrl'
-//     }
-//   ).
-//   when('/docs',
-//     {
-//       authRequired: true,
-//       templateUrl: 'views/docs/upload.html',
-//       controller: 'docCtrl'  
-//     }
-//   ).
-//   when('/property/:propertyID', 
-//     {
-//       authRequired: true, // must authenticate before viewing this page
-//       templateUrl: 'views/dash/property.html',
-//       controller: 'propertyCtrl'
-//     }
-//   ).
-//   otherwise(
-//     {
-//       redirectTo: '/home'
-//     }
-//   );
-
-// }])
 // Configure Google APIs
 .config(function (GAPIProvider, GAPIKEY) {
   var handleClientLoad = function ($window) {
