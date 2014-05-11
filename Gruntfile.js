@@ -1,4 +1,7 @@
+
 module.exports = function(grunt) {
+    'use strict';
+
     require('load-grunt-tasks')(grunt);
     // config
     grunt.initConfig({
@@ -32,6 +35,9 @@ module.exports = function(grunt) {
                     $: true,
                     "angular": true,
                 },
+            options: {
+                globalstrict: true
+            }
         },
         less: {
           development: {

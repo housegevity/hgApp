@@ -1,5 +1,6 @@
+'use strict';
+
 (function () {
-  'use strict';
 
   angular.module('hgApp.services', [
     'hgApp.service.login',
