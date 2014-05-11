@@ -9,7 +9,7 @@ angular.module('hgApp', [
   'authSecurity',
   'angularFileUpload',
   'angular-gapi',
-  'mgo-angular-wizard',
+  'ui.router',
   'hgApp.config',
   'hgApp.filters',
   'hgApp.services',
@@ -18,44 +18,65 @@ angular.module('hgApp', [
   'hgApp.dashCtrl',
   'hgApp.docCtrl',
   'hgApp.propertyCtrl'
-]).
-config(['$routeProvider', function ($routeProvider) {
-  
-  $routeProvider.
-  when('/home',
-    {
+])
+.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/home");
+  $stateProvider
+    .state('home', {
+      authRequired: true, // must authenticate before viewing this page
+      url: '/home',
       templateUrl: 'views/home.html',
       controller: 'loginCtrl'
-    }
-  ).
-  when('/dash',
-    {
+    })
+    .state('dash', {
       authRequired: true, // must authenticate before viewing this page
+      url: '/dash',
       templateUrl: 'views/dash/dashboard.html',
       controller: 'dashCtrl'
-    }
-  ).
-  when('/docs',
-    {
-      authRequired: true,
+    })
+    .state('docs', {
+      url: '/docs',
       templateUrl: 'views/docs/upload.html',
       controller: 'docCtrl'  
-    }
-  ).
-  when('/property/:propertyID', 
-    {
-      authRequired: true, // must authenticate before viewing this page
+    })
+    .state('property', {
+      authenticated: true,
+      url: '/property/:propertyID',
       templateUrl: 'views/dash/property.html',
       controller: 'propertyCtrl'
-    }
-  ).
-  otherwise(
-    {
-      redirectTo: '/home'
-    }
-  );
+    })
+})
 
-}])
+// config(['$routeProvider', function ($routeProvider, $stateProvider) {
+//   ).
+//   when('/dash',
+//     {
+//       authRequired: true, // must authenticate before viewing this page
+//       templateUrl: 'views/dash/dashboard.html',
+//       controller: 'dashCtrl'
+//     }
+//   ).
+//   when('/docs',
+//     {
+//       authRequired: true,
+//       templateUrl: 'views/docs/upload.html',
+//       controller: 'docCtrl'  
+//     }
+//   ).
+//   when('/property/:propertyID', 
+//     {
+//       authRequired: true, // must authenticate before viewing this page
+//       templateUrl: 'views/dash/property.html',
+//       controller: 'propertyCtrl'
+//     }
+//   ).
+//   otherwise(
+//     {
+//       redirectTo: '/home'
+//     }
+//   );
+
+// }])
 // Configure Google APIs
 .config(function (GAPIProvider, GAPIKEY) {
   var handleClientLoad = function ($window) {
