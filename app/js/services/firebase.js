@@ -34,9 +34,8 @@ angular.module('hgApp.service.firebase', ['firebase'])
     }
   ])
 
-  .service('repository', ['$rootScope', 'firebaseRef', 'syncData',
-    function ($rootScope, firebaseRef, syncData) {
-      var userId = $rootScope.auth.user.uid;
+  .service('repository', ['firebaseRef', 'syncData',
+    function (firebaseRef, syncData) {
       return {
         /**
          * Retrieve a list of specified resources for the logged in user.
@@ -46,8 +45,8 @@ angular.module('hgApp.service.firebase', ['firebase'])
          * @param {int} [limit] Optional. The maximum properties to return.
          * @returns A list of resource objects
          */
-        list: function (collection, limit) {
-          return syncData(['users', userId, collection], limit);
+        list: function (user, collection, limit) {
+          return syncData(['users', user.uid, collection], limit);
         },
 
         /**
@@ -59,8 +58,8 @@ angular.module('hgApp.service.firebase', ['firebase'])
          * @param {Function} [callback] Optional callback after completion.
          * @returns {string} the unique id of the new resource
          */
-        save: function (collection, resourceObj, callback) {
-          return firebaseRef(['users', userId, collection]).push(resourceObj, callback);
+        save: function (user, collection, resourceObj, callback) {
+          return firebaseRef(['users', user.uid, collection]).push(resourceObj, callback);
         }
       };
     }]);

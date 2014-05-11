@@ -1,76 +1,100 @@
 <!doctype html>
 <html lang="en" ng-app="hgApp">
-  <head>
-    <meta charset="utf-8">
-    <meta name="google-site-verification" content="H6Cwh91RTFf3mcQOZAK896ChHIw207fz3tgS2WwvSek" />
-    <title>HouseGevity</title>  
-    <!--bootstrap-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">  
-    <link href="style/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
-    <link href="style/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="style/css/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
-    <link href="style/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- fullCalendar -->
-    <link href="style/css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
-    <!-- Daterange picker -->
-    <link href="style/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link href="style/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="style/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-  </head>
+	<head>
+		<meta charset="utf-8">
+		<meta name="google-site-verification" content="H6Cwh91RTFf3mcQOZAK896ChHIw207fz3tgS2WwvSek" />
+		<title>HouseGevity</title>  
+		<!--bootstrap-->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">  
+		<link href="style/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<!-- Ionicons -->
+		<link href="style/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+		<!-- Morris chart -->
+		<link href="style/css/morris/morris.css" rel="stylesheet" type="text/css" />
+		<!-- jvectormap -->
+		<link href="style/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+		<!-- fullCalendar -->
+		<link href="style/css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+		<!-- Daterange picker -->
+		<link href="style/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+		<!-- bootstrap wysihtml5 - text editor -->
+		<link href="style/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+		<!-- Theme style -->
+		<link href="style/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+	</head>
 
-  <body>
+	<body>
 
-    <div>
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#/dash">
-              <img class="img-responsive brand-logo img-rounded" src="../../img/128.png">
-              HouseGevity
-              </a>
-            </div>
+		<div>
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#/dash">
+							<img class="img-responsive brand-logo img-rounded" src="../../img/128.png">
+							HouseGevity
+							</a>
+						</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li ng-show-auth="login">
-                  <a href="#" ng-click="auth.$logout()">Logout
-                    <span class="glyphicon glyphicon-user"></span>
-                  </a>
-                </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div>
-        </nav>  
-      <div ng-view></div>
-    </div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li ng-show-auth="login">
+									<a href="#" ng-click="auth.$logout()">Logout
+										<span class="glyphicon glyphicon-user"></span>
+									</a>
+								</li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div>
+				</nav>  
+<!-- 			<div ng-view></div>
+ -->			<div ui-view></div>
+		</div>
 
-    <footer>
-      <hr>
-      <div class="container">
-        <ul class="nav nav-pills muted">
-          <li><a href="#/dash">Home</a></li>
-          <li class="pull-right">© Copyright HouseGevity</li>
-        </ul>
-        <br><br>
-      </div>
-    </footer>
+		<footer>
+			<hr>
+			<div class="container">
+				<ul class="nav nav-pills muted">
+					<li><a href="#/dash">Home</a></li>
+					<li class="pull-right">© Copyright HouseGevity</li>
+				</ul>
+				<br><br>
+			</div>
+		</footer>
 
-    <!--Dependencies-->
-    <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    -->
-    <script src="lib/angular-file-upload/angular-file-upload-shim.min.js"></script> 
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-route.js"></script>
-    <script src="lib/angular-gapi/google.js"></script>
+
+		<!--Dependencies-->
+		<!-- In production use:
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+		-->
+
+		<!-- DOWNLOADED WITH BOWER -->
+		<!--<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-wizard/dist/angular-wizard.js"></script>
+		<script src="bower_components/angular-file-upload/angular-file-upload.min.js"></script>-->
+
+		<!-- COULD NOT FIND REPO FOR THIS - ASK TAN -->
+    <!--<script src="lib/angular-gapi/google.min.js"></script>
+		<script src="lib/angular-file-upload/angular-file-upload-shim.min.js"></script>-->
+		
+		<!-- BOWER COMPONENTS -->
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+
+    <!-- LIBRARY SCRIPTS : TO DO : MOVE TO BOWER ?? TAN -->
+
     <script src="lib/angular-file-upload/angular-file-upload.min.js"></script>     
+    <!-- Can't figure out how to download via bower -->
+    <script src="lib/angular-file-upload/angular-file-upload-shim.min.js"></script> 
+    <!-- Custom script? Cant' find 'google.js' on git -->
+    <script src="lib/angular-gapi/google.js"></script>
+
+    <!-- CDN SCRIPTS -->
 
     <script src="//cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
     <script src="//cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
@@ -78,6 +102,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="//sdk.amazonaws.com/js/aws-sdk-2.0.0-rc.14.min.js"></script>
+
+    <!--APP SCRIPTS -->
 
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
@@ -87,12 +113,12 @@
     <script src="js/services/resources.js"></script>
     <script src="js/modules/waitForAuth.js"></script>
     <script src="js/modules/authSecurity.js"></script>
-    <!--LIST ALL CONTROLLERS-->
     <script src="js/login/loginCtrl.js"></script>
     <script src="js/dash/dashCtrl.js"></script>
     <script src="js/docs/docCtrl.js"></script>
     <script src="js/property/propertyCtrl.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/directives.js"></script>
-  </body>
+
+	</body>
 </html>

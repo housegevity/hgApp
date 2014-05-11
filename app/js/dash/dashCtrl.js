@@ -3,8 +3,6 @@
 angular.module('hgApp.dashCtrl', [])
 
 .controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, propertyManager, buyReqs, ownReqs) { 
-  var user = $rootScope.auth.user;
-
   //Show Popover 
   $scope.showPopover = function(){
       $('#noticationStatus').popover();
@@ -13,12 +11,16 @@ angular.module('hgApp.dashCtrl', [])
   //GRAB THE DATA DEPENDENCY INJECTIONS
   $scope.ownReqs = ownReqs;
 
-  $scope.allProperties = propertyManager.list();
+  $scope.$on("$firebaseSimpleLogin:login", function (err) {
+    var user = $rootScope.auth.user;
+    $scope.allProperties = propertyManager.list(user);
 
-  for (var i = 0; i < $scope.allProperties.length; i += 1) {
-    $scope.sum = $scope.allProperties[i].notifications.length;
-    console.log($scope.sum);
-  };
+    for (var i = 0; i < $scope.allProperties.length; i += 1) {
+      $scope.sum = $scope.allProperties[i].notifications.length;
+      console.log($scope.sum);
+    };
+
+  });
 
   //WATCH THE ROUTE, player
   $scope.currentRoute = $location.url();
@@ -33,10 +35,12 @@ angular.module('hgApp.dashCtrl', [])
   }
 
   $scope.addNewProperty = function(inputData) {
+    var user = $rootScope.auth.user;
+
     $('#addProperty').modal('hide');
     $('#new_property_onboard').modal('show');
     $scope.newPropertyData = inputData;
-    propertyManager.save(inputData);
+    propertyManager.save(user, inputData);
 
     console.log($scope.newPropertyData);
     $scope.StepOne = true;

@@ -10,8 +10,8 @@ angular.module('hgApp.service.resources', ['firebase', 'angular-gapi'])
          * @param {limit} [limit] Max results to return
          * @return A (possibly empty) list with all the user's properties.
          */
-        list: function (limit) {
-          return repository.list(collection, limit);
+        list: function (user, limit) {
+          return repository.list(user, collection, limit);
         },
         
         /**
@@ -21,7 +21,7 @@ angular.module('hgApp.service.resources', ['firebase', 'angular-gapi'])
          * @param {function} [callback] Optional callback function after object is saved.
          * @return The Firebase reference object.
          */
-        save: function (propertyObj, callback) {
+        save: function (user, propertyObj, callback) {
           return repository.save(collection, propertyObj, callback);
         }
       };
