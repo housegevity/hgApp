@@ -52,8 +52,4 @@ angular.module('hgApp.propertyCtrl', ['firebase'])
       $('#documentModal').modal('show');
   };
 
-  $scope.updateChecklistProg = function (mainChecklist) {
-    alert(mainChecklist);
-  };
-
 })
