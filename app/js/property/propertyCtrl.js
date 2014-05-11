@@ -48,7 +48,12 @@ angular.module('hgApp.propertyCtrl', ['firebase'])
       console.log("document category selected")
   };
 
-  $scope.addDocument = function() {
+  $scope.addDocument = function () {
       $('#documentModal').modal('show');
-  }
+  };
+
+  $scope.updateChecklistProg = function (mainChecklist) {
+    alert(mainChecklist);
+  };
+
 })

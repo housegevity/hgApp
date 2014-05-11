@@ -44,7 +44,7 @@ config(['$routeProvider', function ($routeProvider) {
   when('/property/:propertyID', 
     {
       authRequired: true, // must authenticate before viewing this page
-      templateUrl: 'views/dash/property.html',
+      templateUrl: 'views/property.html',
       controller: 'propertyCtrl'
     }
   ).
