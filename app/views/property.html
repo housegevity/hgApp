@@ -105,12 +105,15 @@
 					<hr>
 
 		   		<h4>Main Checklist ({{quarterly_notificationsLength}})</h4>
-					<ul class="list-group">
-		   			<li class="list-group-item" ng-repeat="quarterlynotification in quarterly_notifications">
-		   				<input type="checkbox" id="chk1" name="chk1">
-		   				{{quarterlynotification.name}}
-		   			</li>
-		   		</ul>
+					<form role="form" ng-submit="updateChecklistProg()">
+						<ul class="list-group">
+			   			<li class="list-group-item" ng-repeat="quarterlynotification in quarterly_notifications">
+			   				<input type="checkbox" name="{{quarterlynotification.name}}" checklist-model="quarterlynotification.name" checklist-value="main-checklist-status">
+			   				{{quarterlynotification.name}}
+			   			</li>
+			   		</ul>
+			   		<button class="btn btn-primary btn-block" value="update">Update</button>
+		   		</form>
 		    
 		    	<hr>
 
@@ -126,29 +129,38 @@
 
 					<br>
 
-		    	<ul class="list-group" ng-if="selectedTab == 1">
-						<li class="list-group-item" ng-repeat="prewinterwarnings in prewinter_notifications">
-							<input type="checkbox" id="chk1" name="chk1">
-							{{prewinterwarnings.name}}
-						</li>
-					</ul>
-
-					<ul class="list-group" ng-if="selectedTab == 2">
-							<li class="list-group-item" ng-repeat="presummerwarnings in presummer_notifications">
+					<form role="form" ng-submit="updateChecklistProg()" ng-if="selectedTab == 1">
+			    	<ul class="list-group">
+							<li class="list-group-item" ng-repeat="prewinterwarnings in prewinter_notifications">
 								<input type="checkbox" id="chk1" name="chk1">
-								{{presummerwarnings.name}}
+								{{prewinterwarnings.name}}
 							</li>
-					</ul>
+						</ul>
+						<button class="btn btn-primary btn-block" value="Update">Update</button>
+					</form>
 
+					<form role="form" ng-submit="updateChecklistProg()" ng-if="selectedTab == 2">
+						<ul class="list-group">
+								<li class="list-group-item" ng-repeat="presummerwarnings in presummer_notifications">
+									<input type="checkbox" id="chk1" name="chk1">
+									{{presummerwarnings.name}}
+								</li>
+						</ul>
+						<button class="btn btn-primary btn-block" value="Update">Update</button>
+					</form>
+					
 					<hr>
 
 					<h4>Annual Checklist ({{annual_notificationsLength}})</h4>
-					<ul class="list-group">
-			   		<li class="list-group-item" ng-repeat="annual_notification in annual_notifications">
-			 				<input type="checkbox" id="chk1" name="chk1">
-			 				{{annual_notification.name}}
-			 			</li>
-		 			</ul>
+					<form role="form" ng-submit="updateChecklistProg()">
+						<ul class="list-group">
+				   		<li class="list-group-item" ng-repeat="annual_notification in annual_notifications">
+				 				<input type="checkbox" id="chk1" name="chk1">
+				 				{{annual_notification.name}}
+				 			</li>
+			 			</ul>
+			 			<button class="btn btn-primary btn-block" value="Update">Update</button>
+		 			</form>
 		 		</div>
 			</div>
 		</div>

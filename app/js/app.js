@@ -37,7 +37,7 @@ angular.module('hgApp', [
       url: '/docs',
       templateUrl: 'views/docs/upload.html',
       controller: 'docCtrl'  
-    })
+
     .state('property', {
       authenticated: true,
       url: '/property/:propertyID',
