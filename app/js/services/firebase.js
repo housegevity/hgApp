@@ -1,3 +1,5 @@
+/* global angular */
+'use strict';
 
 angular.module('hgApp.service.firebase', ['firebase'])
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hgApp.dashCtrl', [])
+angular.module('hgApp.controller.dashCtrl', [])
 
 .controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, propertyManager, buyReqs, ownReqs) { 
   //Show Popover 

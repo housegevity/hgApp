@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hgApp.loginCtrl', [])
+angular.module('hgApp.controller.loginCtrl', [])
 
 .controller('loginCtrl', function ($scope, $log, loginService) {
   $scope.login = function () {

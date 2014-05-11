@@ -1,4 +1,6 @@
-/* global angular*/
+/* global angular */
+'use strict';
+
 angular.module('hgApp.service.resources', ['firebase', 'angular-gapi'])
   .factory('propertyManager', ['repository',
     function (repository) {

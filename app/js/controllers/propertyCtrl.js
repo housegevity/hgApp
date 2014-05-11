@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-angular.module('hgApp.propertyCtrl', ['firebase'])
+angular.module('hgApp.controller.propertyCtrl', ['firebase'])
 
 .controller('propertyCtrl', function($scope, $location, $routeParams, $http, ownReqs, documents) {
 

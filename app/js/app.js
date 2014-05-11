@@ -2,21 +2,37 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('hgApp', [
+  // Libs / modules
   'ngRoute',
   'firebase',
-  'waitForAuth',
-  'authSecurity',
   'angularFileUpload',
   'angular-gapi',
   'ui.router',
+  'waitForAuth',
+  'authSecurity',
+  
+  // Configuration
   'hgApp.config',
+
+  // Filters
   'hgApp.filters',
-  'hgApp.services',
-  'hgApp.directives',
-  'hgApp.loginCtrl',
-  'hgApp.dashCtrl',
-  'hgApp.docCtrl',
-  'hgApp.propertyCtrl'
+
+  // Services
+  'hgApp.service.login',
+  'hgApp.service.firebase',
+  'hgApp.service.resources',
+
+  // Directives
+  'hgApp.directives.version',
+
+  // Controllers
+  'hgApp.controller.loginCtrl',
+  'hgApp.controller.dashCtrl',
+  'hgApp.controller.docCtrl',
+  'hgApp.controller.propertyCtrl',
+
+  // Temp
+  'hgApp.service.testData'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home");
