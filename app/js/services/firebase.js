@@ -36,8 +36,8 @@ angular.module('hgApp.service.firebase', ['firebase'])
     }
   ])
 
-  .service('repository', ['firebaseRef', 'syncData',
-    function (firebaseRef, syncData) {
+  .service('repository', ['$q', 'firebaseRef', 'syncData',
+    function ($q, firebaseRef, syncData) {
       return {
         /**
          * Retrieve a list of specified resources for the logged in user.
@@ -51,6 +51,15 @@ angular.module('hgApp.service.firebase', ['firebase'])
           return syncData(['users', user.id, collection], limit);
         },
 
+        find: function (user, collection, refId) {
+          var result = $q.defer();
+          var ref = firebaseRef(['users', user.id, collection, refId]);
+          ref.on('value', function (snapshot) {
+            result.resolve(snapshot.val());
+          });
+          return result.promise;
+        },
+
         /**
          * Save a new resource for the logged in user.
          *
@@ -61,7 +70,7 @@ angular.module('hgApp.service.firebase', ['firebase'])
          * @returns {string} the unique id of the new resource
          */
         save: function (user, collection, resourceObj, callback) {
-          return firebaseRef(['users', user.id, collection]).push(resourceObj, callback);
+          return firebaseRef(['users', user.id, collection], resourceObj.id).set(resourceObj, callback);
         }
       };
     }]);

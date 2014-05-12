@@ -1,23 +1,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-2">
-			<img class="img-responsive" ng-src="{{selectedProperty.imgURL}}">
+			<img class="img-responsive" ng-src="{{property.imgURL}}">
 		</div>
 		<div class="col-md-10">
-			<h2>{{selectedProperty.name}} in {{selectedProperty.city}}</h2>
+			<h2>{{property.name}} in {{property.city}}</h2>
 			<h4>
-				<small>Added {{selectedProperty.date_added}}</small>
+				<small>Added {{property.dateAdded}</small>
 			</h4>
 		</div>
 	</div>
 
 	<br>
 
-	<h4 ng-if="selectedProperty.notifications.length > 0">Notificaitons 
-		<span class="badge">{{selectedProperty.notifications.length}}</span>
+	<h4 ng-if="property.notifications.length > 0">Notificaitons 
+		<span class="badge">{{property.notifications.length}}</span>
 	</h4>
 
-	<div class="alert alert-danger" ng-repeat="warnings in selectedProperty.notifications">
+	<div class="alert alert-danger" ng-repeat="warnings in property.notifications">
 	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<strong>Warning!</strong> You have not completed your {{warnings}} documents. Click <a href="" class="alert-link">here</a> to complete them.
 	</div>
@@ -94,11 +94,11 @@
 		    </div>
 		   	
 		   	<div class="panel-body">
-		   		<p>You are <strong>{{selectedProperty.completion_status}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
+		   		<p>You are <strong>{{property.completion_status}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
 
 		   		<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completion_status}}" aria-valuemin="0" aria-valuemax="100" style="width: {{selectedProperty.completion_status}}%;">
-					 	{{selectedProperty.completion_status}}%
+					  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completion_status}}" aria-valuemin="0" aria-valuemax="100" style="width: {{property.completion_status}}%;">
+					 	{{property.completion_status}}%
 					  </div>
 					</div>
 

@@ -13,7 +13,11 @@ angular.module('hgApp.service.propertyManager', ['firebase', 'angular-gapi', 'ng
          * @return A (possibly empty) list with all the user's properties.
          */
         list: function (user, limit) {
-          return repository.list(user, collection, limit);
+          return user ? repository.list(user, collection, limit) : null;
+        },
+
+        get: function (user, propertyID) {
+          return repository.find(user, collection, propertyID);
         },
 
         /**
