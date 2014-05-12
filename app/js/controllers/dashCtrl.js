@@ -8,6 +8,8 @@ angular.module('hgApp.controller.dashCtrl', [])
       $('#noticationStatus').popover();
   };
 
+  $scope.addPropertyStatus = false;
+
   // Initialize the scope, only if the user has logged in.
   $scope.$on("$firebaseSimpleLogin:login", function (err) {
     var user = $rootScope.auth.user;
@@ -18,14 +20,4 @@ angular.module('hgApp.controller.dashCtrl', [])
       console.log($scope.sum);
     };
   });
-
-  $scope.showNewPropertyModal = function() {
-      $('#addPropertyModal').modal('show');
-  }
-
-  $scope.uploadOnboardDocuments = function(inputData) {
-    $scope.newDocData = inputData;
-    console.log($scope.newDocData);
-    $scope.StepOne = false;
-  };
 });
