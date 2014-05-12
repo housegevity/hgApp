@@ -36,7 +36,7 @@ angular.module('hgApp', [
   'hgApp.controller.addPropertyCtrl'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
-  //$urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/home");
   $stateProvider
     .state('home', {
       authRequired: true, // must authenticate before viewing this page
