@@ -1,13 +1,7 @@
+/* global angular */
 'use strict';
 
-(function () {
-
-  angular.module('hgApp.services', [
-    'hgApp.service.login',
-    'hgApp.service.firebase',
-    'hgApp.service.resources'
-  ])
-
+angular.module('hgApp.service.testData', [])
   .factory('documents', function () {
 
     var documents = [{
@@ -78,4 +72,3 @@
     //return the array here
     return ownReqs
   });
-})();
