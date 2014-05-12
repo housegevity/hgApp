@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('hgApp.loginCtrl', [])
+angular.module('hgApp.controller.loginCtrl', [])
 
 .controller('loginCtrl', function ($scope, $log, loginService) {
+  /* Login - Authenticate the user with Google Auth */
   $scope.login = function () {
     $scope.err = null;
     loginService.login(function (err, user) {

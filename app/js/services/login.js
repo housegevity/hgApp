@@ -1,3 +1,5 @@
+/* global angular */
+'use strict';
 
 angular.module('hgApp.service.login', ['angular-gapi', 'firebase', 'hgApp.service.firebase'])
   // loginService manages user login / logout and profile services.

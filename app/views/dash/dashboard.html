@@ -15,7 +15,7 @@
 			</h3>
 		</div>
 		<div class="col-md-6">
-			<a class="pull-right btn btn-default" ng-click="addNewPropertyModal()">add a property</a>
+			<a class="pull-right btn btn-default" ng-click="showNewPropertyModal()">add a property</a>
 		</div>
 	</div>
 	
@@ -72,9 +72,9 @@
 	<h3 class="text-center">
 		<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
 		<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
-		<a ng-click="addNewPropertyModal()">here</a>
+		<a ng-click="showNewPropertyModal()" href>here</a>.
 	</h3>
 
 </div>
 
-<div ng-include=" 'views/dash/_addproperty_modal.html' "></div>
+<div ng-include=" 'views/dash/_add_property_modal.html' "></div>

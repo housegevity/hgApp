@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hgApp.docCtrl', ['hgApp.service.resources'])
+angular.module('hgApp.controller.docCtrl', [])
 
 .controller('docCtrl', ['$scope', '$log', 'documentManager', function ($scope, $log, documentManager) {
   var user = $scope.auth.user;

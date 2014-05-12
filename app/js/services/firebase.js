@@ -1,3 +1,5 @@
+/* global angular */
+'use strict';
 
 angular.module('hgApp.service.firebase', ['firebase'])
 
@@ -46,7 +48,7 @@ angular.module('hgApp.service.firebase', ['firebase'])
          * @returns A list of resource objects
          */
         list: function (user, collection, limit) {
-          return syncData(['users', user.uid, collection], limit);
+          return syncData(['users', user.id, collection], limit);
         },
 
         /**
@@ -59,7 +61,7 @@ angular.module('hgApp.service.firebase', ['firebase'])
          * @returns {string} the unique id of the new resource
          */
         save: function (user, collection, resourceObj, callback) {
-          return firebaseRef(['users', user.uid, collection]).push(resourceObj, callback);
+          return firebaseRef(['users', user.id, collection]).push(resourceObj, callback);
         }
       };
     }]);
