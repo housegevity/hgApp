@@ -2,11 +2,47 @@
 
 angular.module('hgApp.dashCtrl', [])
 
-.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, propertyManager, buyReqs, ownReqs) { 
+.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, propertyManager, buyReqs, ownReqs, documents) { 
   //Show Popover 
   $scope.showPopover = function(){
       $('#noticationStatus').popover();
   };
+
+  $scope.addPropertyStatus = false;
+
+  //GRAB THE NESCESSARY JSON DATA
+  $http.get('data/all_properties.json').success(function(data) {
+      $scope.all_properties = data;
+      $scope.all_propertiesLength = $scope.all_properties.length;
+      $scope.selectedProperty = $scope.all_properties[$routeParams.propertyID - 1]
+  });
+
+  $http.get('data/all_required_docs.json').success(function(data) {
+      $scope.required_docs = data;
+  });
+
+  $http.get('data/presummer_notifications.json').success(function(data) {
+      $scope.presummer_notifications = data;
+      $scope.presummer_notificationsLength = $scope.presummer_notifications.length;
+  });
+
+  $http.get('data/prewinter_notifications.json').success(function(data) {
+      $scope.prewinter_notifications = data;
+      $scope.prewinter_notificationsLength = $scope.prewinter_notifications.length;
+  });
+
+  $http.get('data/quarterly_notifications.json').success(function(data) {
+      $scope.quarterly_notifications = data;
+      $scope.quarterly_notificationsLength = $scope.quarterly_notifications.length;
+  });
+
+  alert($scope.quarterly_notificationsLength);
+
+  $http.get('data/annual_notifications.json').success(function(data) {
+      $scope.annual_notifications = data;
+      $scope.annual_notificationsLength = $scope.annual_notifications.length;
+  });
+
 
   //GRAB THE DATA DEPENDENCY INJECTIONS
   $scope.ownReqs = ownReqs;

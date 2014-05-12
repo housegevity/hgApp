@@ -1,0 +1,24 @@
+<div class="panel panel-default col-md-8 col-md-offset-2">
+<!-- step_3.html -->
+	<div class="panel-heading">
+		<h4>Step 3/3: Complete Basic Checklist</h4>
+	</div>		
+	<form class="form-horizontal" ng-submit="addNewProperty(property)">
+		<ul class="list-group">
+ 			<li class="list-group-item" ng-repeat="quarterlynotification in quarterly_notifications">
+ 				<input type="checkbox" name="{{quarterlynotification.name}}" checklist-model="quarterlynotification.name" checklist-value="main-checklist-status">
+ 				{{quarterlynotification.name}}
+ 			</li>
+ 		</ul>
+
+	  <div class="modal-footer">
+	    <a class="btn btn-default" ui-sref="dash">
+	    	Cancel
+	    </a>
+	    <button type="submit" class="btn btn-primary" value="Next" ui-sref="dash">
+	    	Upload Property
+	    </button>
+	  </div>
+	  
+	</form>
+</div>

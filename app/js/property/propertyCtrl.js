@@ -3,7 +3,7 @@
 /* Controllers */
 angular.module('hgApp.propertyCtrl', ['firebase'])
 
-.controller('propertyCtrl', function($scope, $location, $routeParams, $http, ownReqs, documents) {
+.controller('propertyCtrl', function ($scope, $location, $routeParams, $http, ownReqs, documents) {
 
   $scope.selectedTab = 1;
   $scope.ownReqs = ownReqs;

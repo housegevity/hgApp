@@ -6,20 +6,20 @@
 	  <strong>Welcome to your Dashboard!</strong> You are now logged in as {{ auth.user.displayName }}.
 	</div>
 
-	<hr>
+	<hr ng-if="!addPropertyStatus">
 
-	<div class="row">
+	<div class="row" ng-if="!addPropertyStatus">
 		<div class="col-md-6">
 			<h3 class="pull-left dashboard-header">
 				My Properties ({{ allProperties.length || 0 }})
 			</h3>
 		</div>
 		<div class="col-md-6">
-			<a class="pull-right btn btn-default" ng-click="addNewPropertyModal()">add a property</a>
+			<a class="pull-right btn btn-default" ui-sref="addProp.S1">add a property</a>
 		</div>
 	</div>
 	
-	<div class="row">
+	<div class="row" ng-if="!addPropertyStatus">
 			<div class="col-md-6" ng-repeat="property in allProperties">
 				<div class="panel panel-default">
 					
@@ -69,12 +69,13 @@
 
 	<hr>
 
-	<h3 class="text-center">
+	<h3 class="text-center" ng-if="!addPropertyStatus">
 		<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
 		<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
-		<a ng-click="addNewPropertyModal()">here</a>
+		<a ui-sref="addProp.S1">here</a>
 	</h3>
+
+	<div ng-if="addPropertyStatus" ui-view></div>
 
 </div>
 
-<div ng-include=" 'views/dash/_addproperty_modal.html' "></div>
