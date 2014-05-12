@@ -1,0 +1,41 @@
+<div class="panel panel-default col-md-8 col-md-offset-2">
+<!-- step_2.html -->
+	<div class="panel-heading">
+		<h4>Step 2/3: Upload Relevant Docs</h4>
+	</div>
+	<form class="form-horizontal" ng-submit="uploadOnboardDocuments()">
+		<div class="panel-body">  
+			<div class="form-group">
+	    	<label class="col-md-3 col-md-offset-1 control-label">Document Name</label>
+	    	<div class="col-md-7">
+	    		<input class="form-control" type="text" placeholder="enter name here" name="document-name" ng-modal="property.sqft" required></input>
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label class="col-md-3 col-md-offset-1 control-label">Description</label>
+	    	<div class="col-md-7">
+	    		<input class="form-control" type="text" placeholder="short description" ng-modal="property.yrbuilt"></input>
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+				<div class="col-md-7 col-md-offset-4">
+					<button type="submit" class="btn btn-primary btn-block">
+	      		<span class="glyphicon glyphicon-file"></span>
+	      		Upload
+	    		</button>
+    		</div>
+	  	</div>
+	  </div>
+		
+	  <div class="modal-footer">
+	    <a class="btn btn-default" ui-sref="dash">
+	    	Cancel
+	    </a>
+	    <button type="submit" class="btn btn-primary" value="Next" ui-sref="addProp.S3">
+	    	Continue
+	    </button>
+	  </div>
+	</form>
+</div>

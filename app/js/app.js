@@ -32,10 +32,11 @@ angular.module('hgApp', [
   'hgApp.controller.loginCtrl',
   'hgApp.controller.dashCtrl',
   'hgApp.controller.docCtrl',
-  'hgApp.controller.propertyCtrl'
+  'hgApp.controller.propertyCtrl',
+  'hgApp.controller.addPropertyCtrl'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/home");
+  //$urlRouterProvider.otherwise("/home");
   $stateProvider
     .state('home', {
       authRequired: true, // must authenticate before viewing this page
@@ -60,6 +61,24 @@ angular.module('hgApp', [
       templateUrl: 'views/property.html',
       controller: 'propertyCtrl'
     })
+    .state('addProp', {
+      abstract: true,
+      url: '/dash/addProp',
+      templateUrl: 'views/dash/dashboard.html',
+      controller: 'addPropertyCtrl'
+    })
+    .state('addProp.S1', {
+      url: '/step1',
+      templateUrl: 'views/dash/_add_property_S1.html',
+    })
+    .state('addProp.S2', {
+      url: '/step2',
+      templateUrl: 'views/dash/_add_property_S2.html',
+    })
+    .state('addProp.S3', {
+      url: '/step3',
+      templateUrl: 'views/dash/_add_property_S3.html',
+    });
 })
 // Configure Google APIs
 .config(function (GAPIProvider, GAPIKEY) {
