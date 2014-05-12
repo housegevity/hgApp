@@ -10,6 +10,7 @@ angular.module('hgApp', [
   'ui.router',
   'waitForAuth',
   'authSecurity',
+  'ng-shortId',
   
   // Configuration
   'hgApp.config',
@@ -20,7 +21,9 @@ angular.module('hgApp', [
   // Services
   'hgApp.service.login',
   'hgApp.service.firebase',
-  'hgApp.service.resources',
+  'hgApp.service.propertyManager',
+  'hgApp.service.documentManager',
+  'hgApp.service.testData', // Temporary for testing only
 
   // Directives
   'hgApp.directives.version',
@@ -29,10 +32,7 @@ angular.module('hgApp', [
   'hgApp.controller.loginCtrl',
   'hgApp.controller.dashCtrl',
   'hgApp.controller.docCtrl',
-  'hgApp.controller.propertyCtrl',
-
-  // Temp
-  'hgApp.service.testData'
+  'hgApp.controller.propertyCtrl'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home");
