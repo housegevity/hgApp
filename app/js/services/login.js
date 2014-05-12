@@ -63,17 +63,23 @@ angular.module('hgApp.service.login', ['angular-gapi', 'firebase', 'hgApp.servic
 
   // Profile creator creates a user profile for the authorized user.
   .factory('profileCreator', ['firebaseRef', '$timeout',
-    function (firebaseRef, $timeout) {
-      return function (id, email, callback) {
-        firebaseRef('users/' + id).set({
-          email: email
-        }, function (err) {
-          if (callback) {
-            $timeout(function () {
-              callback(err);
-            });
-          }
-        });
-      };
-    }
+      function (firebaseRef, $timeout) {
+        return function (id, email, callback) {
+          var ref = firebaseRef(['users', id]);
+          ref.on("value", function (snapshot) {
+            if (snapshot.val() === null) {
+              ref.set({
+                email: email
+              }, 
+              function (err) {
+                if (callback) {
+                  $timeout(function () {
+                    callback(err);
+                  });
+                }
+              });
+            }
+          });
+        };
+      }
   ]);

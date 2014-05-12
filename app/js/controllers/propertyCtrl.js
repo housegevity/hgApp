@@ -2,23 +2,37 @@
 
 /* Controllers */
 angular.module('hgApp.controller.propertyCtrl', ['firebase'])
+  .controller('propertyCtrl', ['$rootScope', '$scope', '$stateParams', '$log', 'propertyManager',
+    function ($rootScope, $scope, $stateParams, $log, propertyManager) {
+      $scope.property = null;
 
-.controller('propertyCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$http', '$log', 'propertyManager',
-  function ($rootScope, $scope, $location, $routeParams, $http, $log, propertyManager) {
-  $log.info("Init scope");
+      $scope.findProperty = function (event, user) {
+        propertyManager.get(user, $stateParams.propertyID).then(function (data) {
+          $scope.property = data;
+          $log.info("Property: ", $scope.property);
+        });
+      };
 
-  $scope.property = null;
+      $scope.addNewProperty = function (newProperty) {
+        $scope.property = angular.copy(newProperty);
+        $scope.property.dateAdded = new Date();
 
-  $scope.addNewProperty = function(newProperty) {
-    var user = $rootScope.auth.user;
+        // TODO Upload photos
 
-    $scope.property = angular.copy(newProperty);
+        // Save the proeprty to firebase
+        propertyManager.save($rootScope.auth.user, $scope.property);
+        $scope.property = null;
+        $('#addPropertyModal').modal('hide');
+      };
 
-    // TODO Upload photos
-
-    // Save the proeprty to firebase
-    propertyManager.save(user, $scope.property, function (respData) {
-
-    });
-  };
-}]);
+      
+      if ($stateParams.propertyID) {
+        if ($rootScope.auth.user) {
+          return $scope.findProperty(null, $rootScope.auth.user)
+        } else {
+          // Initialize the scope, only if the user has logged in.
+          $scope.$on("$firebaseSimpleLogin:login", $scope.findProperty);
+        }
+      }
+    }
+  ]);
