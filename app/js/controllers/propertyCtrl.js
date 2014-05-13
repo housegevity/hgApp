@@ -5,6 +5,20 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
   .controller('propertyCtrl', ['$rootScope', '$scope', '$stateParams', '$log', 'propertyManager',
     function ($rootScope, $scope, $stateParams, $log, propertyManager) {
       $scope.property = null;
+      $scope.imageFile = null;
+
+      $scope.onImageSelect = function ($files) {
+        $scope.imageFile = $files[0];
+      }
+
+      $scope.uploadImage = function () {
+        var user = $rootScope.auth.user;
+
+        if ($scope.imageFile) {
+          propertyManager.upload(user, $scope.imageFile);
+          $scope.imageFile = null;
+        }
+      }
 
       $scope.findProperty = function (event, user) {
         propertyManager.get(user, $stateParams.propertyID).then(function (data) {
@@ -24,7 +38,6 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         $scope.property = null;
         $('#addPropertyModal').modal('hide');
       };
-
 
       if ($stateParams.propertyID) {
         if ($rootScope.auth.user) {

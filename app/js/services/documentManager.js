@@ -17,8 +17,11 @@ angular.module('hgApp.service.documentManager', ['firebase', 'angular-gapi'])
             ACL: 'private',
             ServerSideEncryption: 'AES256'
           }, function (err, data) {
-            $log.info(err);
-            $log.info(data);
+            if (err) {
+              $log.error(err);
+            } else {
+              $log.info(data);
+            }
           });
         }
       };
