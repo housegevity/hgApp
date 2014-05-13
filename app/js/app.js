@@ -64,7 +64,7 @@ angular.module('hgApp', [
     .state('addProp', {
       authenticated: true,
       abstract: true,
-      url: '/dash/addProp',
+      url: '/property/add',
       templateUrl: 'views/dash/dashboard.html',
       controller: 'propertyCtrl'
     })
