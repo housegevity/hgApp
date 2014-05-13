@@ -2,7 +2,7 @@
 
 angular.module('hgApp.controller.dashCtrl', [])
 
-.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $routeParams, propertyManager) {
+.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $stateParams, propertyManager) {
   $scope.addPropertyStatus = false;
 
   //Show Popover 

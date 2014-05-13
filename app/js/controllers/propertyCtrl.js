@@ -25,7 +25,7 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         $('#addPropertyModal').modal('hide');
       };
 
-      
+
       if ($stateParams.propertyID) {
         if ($rootScope.auth.user) {
           return $scope.findProperty(null, $rootScope.auth.user)
@@ -33,6 +33,8 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
           // Initialize the scope, only if the user has logged in.
           $scope.$on("$firebaseSimpleLogin:login", $scope.findProperty);
         }
+      } else {
+        $scope.addPropertyStatus = true;
       }
     }
   ]);

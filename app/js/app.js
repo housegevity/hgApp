@@ -32,8 +32,7 @@ angular.module('hgApp', [
   'hgApp.controller.loginCtrl',
   'hgApp.controller.dashCtrl',
   'hgApp.controller.docCtrl',
-  'hgApp.controller.propertyCtrl',
-  'hgApp.controller.addPropertyCtrl'
+  'hgApp.controller.propertyCtrl'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home");
@@ -51,6 +50,7 @@ angular.module('hgApp', [
       controller: 'dashCtrl'
     })
     .state('docs', {
+      authenticated: true,
       url: '/docs',
       templateUrl: 'views/docs/upload.html',
       controller: 'docCtrl'  
@@ -62,22 +62,23 @@ angular.module('hgApp', [
       controller: 'propertyCtrl'
     })
     .state('addProp', {
+      authenticated: true,
       abstract: true,
       url: '/dash/addProp',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'addPropertyCtrl'
+      controller: 'propertyCtrl'
     })
     .state('addProp.S1', {
       url: '/step1',
-      templateUrl: 'views/dash/_add_property_S1.html',
+      templateUrl: 'views/dash/_add_property_S1.html'
     })
     .state('addProp.S2', {
       url: '/step2',
-      templateUrl: 'views/dash/_add_property_S2.html',
+      templateUrl: 'views/dash/_add_property_S2.html'
     })
     .state('addProp.S3', {
       url: '/step3',
-      templateUrl: 'views/dash/_add_property_S3.html',
+      templateUrl: 'views/dash/_add_property_S3.html'
     });
 })
 // Configure Google APIs
