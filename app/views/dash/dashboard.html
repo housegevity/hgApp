@@ -20,6 +20,7 @@
 	</div>
 	
 	<div class="row" ng-if="!addPropertyStatus">
+
 			<div class="col-md-6" ng-repeat="property in allProperties">
 				<div class="panel panel-default">
 					
@@ -43,11 +44,11 @@
 					<ul class="list-group">
 	    			<li class="list-group-item">
 	    				Square Ft.
-	    				<span class="badge">{{property.sq_ft}} sq/ft</span>
+	    				<span class="badge">{{property.squareFt}} sq/ft</span>
 	    			</li>
 	    			<li class="list-group-item">
 	    				Year Built
-	    				<span class="badge">{{property.year_built}}</span>
+	    				<span class="badge">{{property.yearBuilt}}</span>
 	    			</li>
 	    			<li class="list-group-item">
 	    				Bedrooms
@@ -59,7 +60,7 @@
 	    		  </li>
 	    		  <li class="list-group-item">
 	    		  	Lot Size
-	    		  	<span class="badge">{{property.lot_size}} acres</span>
+	    		  	<span class="badge">{{property.lotSize}} acres</span>
 	    		  </li>
 	    		</ul>
 
@@ -75,6 +76,6 @@
 		<a ui-sref="addProp.S1">here</a>
 	</h3>
 
-	<div ng-if="addPropertyStatus" ui-view></div>
+	<div ui-view></div>
 
 </div>

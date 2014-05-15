@@ -6,6 +6,26 @@ angular.module('hgApp.service.propertyManager', ['firebase', 'angular-gapi', 'ng
     function ($log, repository, shortId) {
       var collection = 'properties';
       return {
+        upload: function (user, propertyID, file, callback) {
+          AWS.config.credentials.get();
+          var s3 = new AWS.S3({
+            apiVersion: '2006-03-01'
+          });
+          s3.putObject({
+            Bucket: 'housegevity',
+            Key: [user.id, propertyID, 'assets', 'images', file.name].join('/'),
+            ContentType: file.type,
+            Body: file,
+            ACL: 'private',
+            ServerSideEncryption: 'AES256'
+          }, function (err, data) {
+            if (callback) {
+              callback(err, data);
+            }
+            $log.info(data);
+          });
+        },
+
         /**
          * Retrieve all properties for the logged in user.
          *
@@ -31,9 +51,6 @@ angular.module('hgApp.service.propertyManager', ['firebase', 'angular-gapi', 'ng
           if (!propertyObj.id) {
             propertyObj.id = shortId.generate();
           }
-
-          $log.info("Saving property", propertyObj);
-
           return repository.save(user, collection, propertyObj, callback);
         }
       };
