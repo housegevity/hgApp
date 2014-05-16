@@ -3409,6 +3409,8 @@ fieldset[disabled] .btn-vk.active {
   min-height: 50px;
   margin-bottom: 0;
   border: 1px solid transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .panel-default>.panel-heading {
@@ -3449,6 +3451,6 @@ fieldset[disabled] .btn-vk.active {
   padding: 15px 0 25px 0;
 }
 
-.container {
+.property-container {
   padding-top: 10px;
 }
