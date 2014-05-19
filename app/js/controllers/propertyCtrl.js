@@ -44,8 +44,9 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
               $scope.completedTasks++;
             });
           });
-
-          $scope.completedTasksPercentage = Math.round($scope.completedTasks / $scope.totalTasks * 100);
+          if ($scope.totalTasks > 0) {
+            $scope.completedTasksPercentage = Math.round($scope.completedTasks / $scope.totalTasks * 100);
+          }
         });
       };
 
@@ -60,10 +61,18 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         var property = angular.copy(newProperty);
         property.dateAdded = new Date().getTime();
 
-        // Save the proeprty to firebase
-        propertyManager.save($rootScope.auth.user, property, function (obj) {
-          $log.info(obj);
+        // Initial empty checklists
+        property.checklists = {};
+        angular.forEach($scope.allChecklists, function (val, key) {
+          property.checklists.key = {
+            id: key,
+            name: val.name,
+            tasks: "" // This is a workaround due to Firebase not saving empty arrays.
+          }
         });
+
+        // Save the proeprty to firebase
+        propertyManager.save($rootScope.auth.user, property);
       };
 
       if ($stateParams.propertyID) {
