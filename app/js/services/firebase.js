@@ -48,16 +48,11 @@ angular.module('hgApp.service.firebase', ['firebase'])
          * @returns A list of resource objects
          */
         list: function (user, collection, limit) {
-          return syncData(['users', user.id, collection], limit);
+          return user ? syncData(['users', user.id, collection], limit) : syncData(collection, limit);
         },
 
         find: function (user, collection, refId) {
-          var result = $q.defer();
-          var ref = firebaseRef(['users', user.id, collection, refId]);
-          ref.on('value', function (snapshot) {
-            result.resolve(snapshot.val());
-          });
-          return result.promise;
+          return user ? syncData(['users', user.id, collection, refId]) : syncData([collection, refId]);
         },
 
         /**

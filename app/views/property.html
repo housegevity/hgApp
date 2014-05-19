@@ -6,7 +6,7 @@
 		<div class="col-md-10">
 			<h2>{{property.name}} in {{property.city}}</h2>
 			<h4>
-				<small>Added {{property.dateAdded}</small>
+				<small>Added {{property.dateAdded | date : 'mediumDate'}}</small>
 			</h4>
 		</div>
 	</div>
@@ -94,73 +94,27 @@
 		    </div>
 		   	
 		   	<div class="panel-body">
-		   		<p>You are <strong>{{property.completion_status}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
+		   		<p>You are <strong>{{property.completedTasks}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
 
 		   		<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completion_status}}" aria-valuemin="0" aria-valuemax="100" style="width: {{property.completion_status}}%;">
-					 	{{property.completion_status}}%
+					  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completedTasks}}" aria-valuemin="0" aria-valuemax="100" style="width: {{property.completedTasks}}%;">
+					 	{{property.completedTasks}}%
 					  </div>
 					</div>
 
-					<hr>
-
-		   		<h4>Main Checklist ({{quarterly_notificationsLength}})</h4>
-					<form role="form" ng-submit="updateChecklistProg()">
-						<ul class="list-group">
-			   			<li class="list-group-item" ng-repeat="quarterlynotification in quarterly_notifications">
-			   				<input type="checkbox" name="{{quarterlynotification.name}}" checklist-model="quarterlynotification.name" checklist-value="main-checklist-status">
-			   				{{quarterlynotification.name}}
-			   			</li>
-			   		</ul>
-			   		<button class="btn btn-primary btn-block" value="update">Update</button>
-		   		</form>
-		    
-		    	<hr>
-
-		   		<h4>Seasonal Checklists ({{presummer_notificationsLength + prewinter_notificationsLength}})</h4>
-		   		<ul class="nav nav-tabs">
-					  <li ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">
-					  	<a>Pre-Winter ({{presummer_notificationsLength}})</a>
-					  </li>
-					  <li ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">
-					  	<a>Pre-Summer ({{prewinter_notificationsLength}})</a>
-					  </li>
-					</ul>
-
-					<br>
-
-					<form role="form" ng-submit="updateChecklistProg()" ng-if="selectedTab == 1">
-			    	<ul class="list-group">
-							<li class="list-group-item" ng-repeat="prewinterwarnings in prewinter_notifications">
-								<input type="checkbox" id="chk1" name="chk1">
-								{{prewinterwarnings.name}}
-							</li>
-						</ul>
-						<button class="btn btn-primary btn-block" value="Update">Update</button>
-					</form>
-
-					<form role="form" ng-submit="updateChecklistProg()" ng-if="selectedTab == 2">
-						<ul class="list-group">
-								<li class="list-group-item" ng-repeat="presummerwarnings in presummer_notifications">
-									<input type="checkbox" id="chk1" name="chk1">
-									{{presummerwarnings.name}}
-								</li>
-						</ul>
-						<button class="btn btn-primary btn-block" value="Update">Update</button>
-					</form>
-					
-					<hr>
-
-					<h4>Annual Checklist ({{annual_notificationsLength}})</h4>
-					<form role="form" ng-submit="updateChecklistProg()">
-						<ul class="list-group">
-				   		<li class="list-group-item" ng-repeat="annual_notification in annual_notifications">
-				 				<input type="checkbox" id="chk1" name="chk1">
-				 				{{annual_notification.name}}
-				 			</li>
-			 			</ul>
-			 			<button class="btn btn-primary btn-block" value="Update">Update</button>
-		 			</form>
+					<div ng-repeat="checklist in allChecklists">
+						<hr>
+			   		<h4>{{ checklist.displayName }}</h4>
+						<form role="form" ng-submit="updateChecklistProgress()" >
+							<ul class="list-group">
+				   			<li class="list-group-item" ng-repeat="task in checklist.tasks">
+				   				<input type="checkbox" name="{{task.name}}" checklist-model="propertyRef.checklists[checklist.id].tasks" checklist-value="task.name">
+				   				{{task.displayName}} 
+				   			</li>
+				   		</ul>
+				   		<button class="btn btn-primary btn-block" value="update">Update</button>
+			   		</form>
+		    	</div>
 		 		</div>
 			</div>
 		</div>

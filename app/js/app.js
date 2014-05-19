@@ -11,6 +11,7 @@ angular.module('hgApp', [
   'waitForAuth',
   'authSecurity',
   'ng-shortId',
+  'checklist-model',
   
   // Configuration
   'hgApp.config',
@@ -19,6 +20,7 @@ angular.module('hgApp', [
   'hgApp.filters',
 
   // Services
+  'hgApp.services',
   'hgApp.service.login',
   'hgApp.service.firebase',
   'hgApp.service.propertyManager',
