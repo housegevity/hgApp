@@ -10,6 +10,12 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
       // TODO Move this to resolve      
       checklistsManager.getAllChecklists().$on('loaded', function (data) {
         $scope.allChecklists = data;
+        $scope.totalTasks = 0;
+        angular.forEach($scope.allChecklists, function (val, key) {
+          angular.forEach(val.tasks, function () {
+            $scope.totalTasks++;
+          })
+        });
       });
 
       $scope.onImageSelect = function ($files) {
@@ -32,12 +38,14 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
           $scope.property = data;
 
           // Calculate total completed tasks.
-          $scope.property.completedTasks = 0;
+          $scope.completedTasks = 0;
           angular.forEach($scope.property.checklists, function (v, k) {
             angular.forEach(v.tasks, function (tv, tk) {
-              $scope.property.completedTasks++;
+              $scope.completedTasks++;
             });
           });
+
+          $scope.completedTasksPercentage = Math.round($scope.completedTasks / $scope.totalTasks * 100);
         });
       };
 

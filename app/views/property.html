@@ -97,8 +97,8 @@
 		   		<p>You are <strong>{{property.completedTasks}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
 
 		   		<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="{{properties.completedTasks}}" aria-valuemin="0" aria-valuemax="100" style="width: {{property.completedTasks}}%;">
-					 	{{property.completedTasks}}%
+					  <div class="progress-bar" role="progressbar" aria-valuenow="{{ completedTasksPercentage || 0 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ completedTasksPercentage }}%;">
+					 	{{ completedTasksPercentage || 0 }}%
 					  </div>
 					</div>
 
