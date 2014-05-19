@@ -94,7 +94,7 @@
 		    </div>
 		   	
 		   	<div class="panel-body">
-		   		<p>You are <strong>{{property.completedTasks}}% complete</strong> with all to-do's.Complete the to dos below for a complete home profile</p>
+		   		<p>You are <strong>{{completedTasksPercentage}}% complete</strong> with all TODOs. Complete the to dos below for a complete home profile</p>
 
 		   		<div class="progress">
 					  <div class="progress-bar" role="progressbar" aria-valuenow="{{ completedTasksPercentage || 0 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ completedTasksPercentage }}%;">
