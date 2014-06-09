@@ -23,68 +23,8 @@
 	</div>
 
 	<div class="row">
-
-		<div class="col-md-7">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-		      <h3 class="panel-title">
-						<span class="glyphicon glyphicon glyphicon-file"></span>
-		      	Required Documents 
-		      </h3>
-		    </div>
-				
-				<div class="panel-body">
-					<p>Make sure you complete all of the required docs for your home.</p>
-					<p>Please go through the following categories below to complete the remainding parts</p>
-				</div>
-
-			  <ul class="list-group" >
-			    <li ng-click="setSelected(required_doc.id)" ng-repeat="required_doc in required_docs" class="list-group-item">
-			    	<h4>
-							{{required_doc.category || 'FAILED TO LOAD CATEGORIES' }}
-			    		<span class="pull-right label label-default">{{required_doc.completion_status}}% Complete</span>
-			    	</h4>
-			    	
-			    	<div class="table-responsive" ng-class="{hidden: !(required_doc.id == selectedDocID)}" >
-							<table class="table">
-								<tr ng-repeat="document_name in required_doc.doc_name">
-									<td>
-	  								<span class="glyphicon glyphicon-file"></span>
-				    				{{document_name || 'doc name'}}
-										<span class="pull-right">(<a>export</a> | <a>replace</a>)</span>	    				
-			    				</td>
-								</tr>
-							</table>
-				    	<p>
-				    		<a class="btn btn-default btn-block" ng-click="addDocument()">
-				    			<span class="glyphicon glyphicon-upload"></span>
-				    			Upload a new document
-				    		</a>
-				    	</p>
-				    	<p>
-				    		<a class="btn btn-default btn-block">
-				    			<span class="glyphicon glyphicon-download"></span>
-				    			Download all documents
-				    		</a>
-				    	</p>
-						</div>
-			    </li>
-			  </ul>
-
-			  <div class="panel-footer">
-					<span class="glyphicon glyphicon-download"></span>
-					<a>Export all documents</a> 
-				</div>
-
-			</div>
-
-			<div class="alert alert-success">
-				Need maintenace help? Find plumbers, cleaners, handymen and more at <a href="http://www.handybook.com/">handybook.com</a>
-			</div>
-		</div>
-
 		<div class="col-md-5">
-		
+			
 			<div class="panel panel-default">
 				<div class="panel-heading">
 		        <h3 class="panel-title">	         
