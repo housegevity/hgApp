@@ -2,24 +2,16 @@
 
 angular.module('hgApp.controller.dashCtrl', [])
 
-.controller('dashCtrl', function ($rootScope, $scope, $http, $location, $stateParams, propertyManager) {
-  //Show Popover 
-  $scope.showPopover = function () {
-    $('#noticationStatus').popover();
-  };
-
+.controller('dashCtrl', function ($log, $rootScope, $scope, $http, $location, $stateParams, propertyManager) {
   $scope.listProperties = function (event, user) {
-    $scope.allProperties = propertyManager.list(user);
-  };
+    propertyManager.list(user).$on('loaded', function (data) {
+      $scope.numProperties = 0;
+      $scope.allProperties = data;
 
-  $scope.showNewPropertyModal = function () {
-    $('#addPropertyModal').modal('show');
-  };
-
-  $scope.uploadOnboardDocuments = function (inputData) {
-    $scope.newDocData = inputData;
-    console.log($scope.newDocData);
-    $scope.StepOne = false;
+      angular.forEach(data, function (v, k) {
+        $scope.numProperties++;
+      });
+    })
   };
 
   if ($rootScope.auth.user) {

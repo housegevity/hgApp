@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('hgApp.service.propertyManager', ['firebase', 'angular-gapi', 'ng-shortId'])
-  .factory('propertyManager', ['$log', 'repository', 'shortId',
+  .service('propertyManager', ['$log', 'repository', 'shortId',
     function ($log, repository, shortId) {
       var collection = 'properties';
       return {
@@ -37,7 +37,7 @@ angular.module('hgApp.service.propertyManager', ['firebase', 'angular-gapi', 'ng
         },
 
         get: function (user, propertyID) {
-          return repository.find(user, collection, propertyID);
+          return user ? repository.find(user, collection, propertyID) : null;
         },
 
         /**
