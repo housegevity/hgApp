@@ -33,7 +33,6 @@ angular.module('hgApp', [
   // Controllers
   'hgApp.controller.loginCtrl',
   'hgApp.controller.dashCtrl',
-  'hgApp.controller.docCtrl',
   'hgApp.controller.propertyCtrl'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -77,10 +76,6 @@ angular.module('hgApp', [
     .state('addProp.S2', {
       url: '/step2',
       templateUrl: 'views/dash/_add_property_S2.html'
-    })
-    .state('addProp.S3', {
-      url: '/step3',
-      templateUrl: 'views/dash/_add_property_S3.html'
     });
 })
 // Configure Google APIs
