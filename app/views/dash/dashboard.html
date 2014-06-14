@@ -1,37 +1,44 @@
 <div class="container">
-	<h1>Dashboard</h1>
+	<div class="dashboard-view" ng-if="!addPropertyStatus">
 
-	<div class="alert alert-info alert-dismissable">
-	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	  <strong>Welcome to your Dashboard!</strong> You are now logged in as {{ auth.user.displayName }}.
+		<h1>Dashboard</h1>
+
+		<div class="alert alert-info alert-dismissable">
+		  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		  <strong>Welcome to your Dashboard!</strong> You are now logged in as {{ auth.user.displayName }}.
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="pull-left dashboard-header">
+					My Properties ({{ numProperties || 0 }})
+				</h3>
+			</div>
+			<div class="col-md-6">
+				<a class="pull-right btn btn-default" ui-sref="addProp.S1">add a property</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6" ng-repeat="property in allProperties" ng-include="'views/dash/_property_tile.html'">
+			</div>
+		</div>
+
+		<hr>
+
+		<h3 class="text-center">
+			<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
+			<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
+			<a ui-sref="addProp.S1">here</a>
+		</h3>
 	</div>
 
-	<hr ng-if="!addPropertyStatus">
-
-	<div class="row" ng-if="!addPropertyStatus">
-		<div class="col-md-6">
-			<h3 class="pull-left dashboard-header">
-				My Properties ({{ numProperties || 0 }})
-			</h3>
-		</div>
-		<div class="col-md-6">
-			<a class="pull-right btn btn-default" ui-sref="addProp.S1">add a property</a>
-		</div>
+	<div class="add-property-wizard" ng-if="addPropertyStatus">
+		<h1>Add a property</h1>
+		<hr>
+		<div ui-view></div>
 	</div>
-
-	<div class="row" ng-if="!addPropertyStatus">
-		<div class="col-md-6" ng-repeat="property in allProperties" ng-include="'views/dash/_property_tile.html'">
-		</div>
-	</div>
-
-	<hr>
-
-	<h3 class="text-center" ng-if="!addPropertyStatus">
-		<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
-		<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
-		<a ui-sref="addProp.S1">here</a>
-	</h3>
-
-	<div ui-view></div>
 
 </div>

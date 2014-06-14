@@ -50,17 +50,40 @@ angular.module('hgApp', [
       templateUrl: 'views/dash/dashboard.html',
       controller: 'dashCtrl'
     })
-    .state('docs', {
-      authenticated: true,
-      url: '/docs',
-      templateUrl: 'views/docs/upload.html',
-      controller: 'docCtrl'  
-    })
     .state('property', {
       authenticated: true,
-      url: '/property/:propertyID',
-      templateUrl: 'views/property.html',
+      abstract: true,
+      url: '/property',
+      templateUrl: 'views/property/property.html',
       controller: 'propertyCtrl'
+    })
+    .state('property.detail', {
+      authenticated: true,
+      url: '/:propertyID',
+      templateUrl: 'views/property/_property_details.html',
+      controller: 'propertyCtrl'
+    })
+    .state('healthcheck', {
+      authenticated: true,
+      abstract: true,
+      url: '/property/:propertyID/healthcheck',
+      templateUrl: 'views/property/property.html',
+      controller: 'propertyCtrl'
+    })
+    .state('healthcheck.S1', {
+      authenticated: true,
+      url: '/step1',
+      templateUrl: 'views/healthcheck/_healthcheck_S1.html'
+    })
+    .state('healthcheck.S2', {
+      authenticated: true,
+      url: '/step2',
+      templateUrl: 'views/healthcheck/_healthcheck_S2.html'
+    })
+    .state('healthcheck.S3', {
+      authenticated: true,
+      url: '/step3',
+      templateUrl: 'views/healthcheck/_healthcheck_S3.html'
     })
     .state('addProp', {
       authenticated: true,
