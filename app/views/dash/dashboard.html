@@ -1,81 +1,44 @@
 <div class="container">
-	<h1>Dashboard</h1>
+	<div class="dashboard-view" ng-if="!addPropertyStatus">
 
-	<div class="alert alert-info alert-dismissable">
-	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	  <strong>Welcome to your Dashboard!</strong> You are now logged in as {{ auth.user.displayName }}.
-	</div>
+		<h1>Dashboard</h1>
 
-	<hr ng-if="!addPropertyStatus">
-
-	<div class="row" ng-if="!addPropertyStatus">
-		<div class="col-md-6">
-			<h3 class="pull-left dashboard-header">
-				My Properties ({{ numProperties || 0 }})
-			</h3>
+		<div class="alert alert-info alert-dismissable">
+		  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		  <strong>Welcome to your Dashboard!</strong> You are now logged in as {{ auth.user.displayName }}.
 		</div>
-		<div class="col-md-6">
-			<a class="pull-right btn btn-default" ui-sref="addProp.S1">add a property</a>
-		</div>
-	</div>
-	
-	<div class="row" ng-if="!addPropertyStatus">
 
-			<div class="col-md-6" ng-repeat="property in allProperties">
-				<div class="panel panel-default">
-					
-				  <div class="panel-heading">
-						<h4>
-							{{property.name}}
-							<span class="pull-right badge"><b>{{property.completion_status}}%</b> complete
-							</span>
-						</h4>
-						<span>{{property.city}}, {{property.state}}</span>
-						<span><a href="#/property/{{property.id}}">view</a></span>
-				  </div>
+		<hr>
 
-					<img class="img-responsive" ng-src="{{property.photoUrl}}">
-
-					<div class="panel-body">
-						<div class="alert alert-danger" style="margin-bottom: 0;">You are missing several important documents for this property. Click <a href="#/property/{{property.id}}">here</a> to complete them.
-						</div>
-					</div>
-
-					<ul class="list-group">
-	    			<li class="list-group-item">
-	    				Square Ft.
-	    				<span class="badge">{{property.squareFt}} sq/ft</span>
-	    			</li>
-	    			<li class="list-group-item">
-	    				Year Built
-	    				<span class="badge">{{property.yearBuilt}}</span>
-	    			</li>
-	    			<li class="list-group-item">
-	    				Bedrooms
-	    				<span class="badge">{{property.bedrooms}}</span>
-	    			</li>
-	    		  <li class="list-group-item">
-	    		  	Bathrooms
-	    		  	<span class="badge">{{property.bathrooms}}</span>
-	    		  </li>
-	    		  <li class="list-group-item">
-	    		  	Lot Size
-	    		  	<span class="badge">{{property.lotSize}} acres</span>
-	    		  </li>
-	    		</ul>
-
-				</div>
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="pull-left dashboard-header">
+					My Properties ({{ numProperties || 0 }})
+				</h3>
 			</div>
+			<div class="col-md-6">
+				<a class="pull-right btn btn-default" ui-sref="addProp.S1">add a property</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6" ng-repeat="property in allProperties" ng-include="'views/dash/_property_tile.html'">
+			</div>
+		</div>
+
+		<hr>
+
+		<h3 class="text-center">
+			<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
+			<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
+			<a ui-sref="addProp.S1">here</a>
+		</h3>
 	</div>
 
-	<hr>
-
-	<h3 class="text-center" ng-if="!addPropertyStatus">
-		<span ng-show="allProperties.length > 0 || allProperties.length === undefined">Need to add another property? Click</span> 
-		<span ng-show="allProperties.length === 0 || allProperties.length === null">You don't have any properties yet! Let's add one </span> 
-		<a ui-sref="addProp.S1">here</a>
-	</h3>
-
-	<div ui-view></div>
+	<div class="add-property-wizard" ng-if="addPropertyStatus">
+		<h1>Add a property</h1>
+		<hr>
+		<div ui-view></div>
+	</div>
 
 </div>

@@ -1,41 +1,55 @@
 <div class="panel panel-default col-md-8 col-md-offset-2">
-<!-- step_2.html -->
+	<!-- step_1.html -->
 	<div class="panel-heading">
-		<h4>Step 2/3: Upload Relevant Docs</h4>
+		<h4>Step 2/2: Add Your Specs</h4>
 	</div>
-	<form class="form-horizontal" ng-submit="uploadOnboardDocuments()">
-		<div class="panel-body">  
-			<div class="form-group">
-	    	<label class="col-md-3 col-md-offset-1 control-label">Document Name</label>
-	    	<div class="col-md-7">
-	    		<input class="form-control" type="text" placeholder="enter name here" name="document-name" ng-modal="property.sqft" required></input>
-	    	</div>
-	  	</div>
+	<div class="panel-body">  
+		<form class="form-horizontal">
+		  	<div class="form-group">
+		    	<label class="col-md-3 control-label col-md-offset-1">Sq/Ft</label>
+		    	<div class="col-md-7">
+		    		<input class="form-control" type="text" placeholder="square feet" name="city" ng-model="property.squareFt" required></input>
+		    	</div>
+		  	</div>
 
-	  	<div class="form-group">
-	    	<label class="col-md-3 col-md-offset-1 control-label">Description</label>
-	    	<div class="col-md-7">
-	    		<input class="form-control" type="text" placeholder="short description" ng-modal="property.yrbuilt"></input>
-	    	</div>
-	  	</div>
+		  	<div class="form-group">
+		    	<label class="col-md-3 control-label col-md-offset-1">Lot Size</label>
+		    	<div class="col-md-7">
+		    		<input class="form-control" type="text" placeholder="acres" name="city" ng-model="property.lotSize" required></input>
+		    	</div>
+		  	</div>
 
-	  	<div class="form-group">
-				<div class="col-md-7 col-md-offset-4">
-					<button type="submit" class="btn btn-primary btn-block">
-	      		<span class="glyphicon glyphicon-file"></span>
-	      		Upload
-	    		</button>
-    		</div>
-	  	</div>
-	  </div>
-		
-	  <div class="modal-footer">
-	    <a class="btn btn-default" ui-sref="dash">
-	    	Cancel
-	    </a>
-	    <button type="submit" class="btn btn-primary" value="Next" ui-sref="addProp.S3">
-	    	Continue
-	    </button>
-	  </div>
-	</form>
+		  	<div class="form-group">
+		    	<label class="col-md-3 control-label col-md-offset-1">Year Built</label>
+		    	<div class="col-md-7">
+		    		<input class="form-control" type="text" placeholder="" name="city" ng-model="property.yearBuilt" required></input>
+		    	</div>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<label class="col-md-3 control-label col-md-offset-1">Bedrooms</label>
+		    	<div class="col-md-7">
+		    		<input class="form-control" type="text" placeholder="" name="bedrooms" ng-model="property.bedrooms" required></input>
+		    	</div>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<label class="col-md-3 control-label col-md-offset-1">Bathrooms</label>
+		    	<div class="col-md-7">
+		    		<input class="form-control" type="text" placeholder="" name="bathrooms" ng-model="property.bathrooms" required></input>
+		    	</div>
+		  	</div>
+
+			</div>
+
+		  <div class="modal-footer">
+		    <a class="btn btn-default" ui-sref="dash">
+		    	Cancel
+		    </a>
+		    <button type="submit" class="btn btn-primary" value="Next" ng-click="addNewProperty(property)" ui-sref="dash">
+		    	Add Property
+		    </button>
+		  </div>
+		</form>
+	</div>
 </div>
