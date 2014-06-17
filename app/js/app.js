@@ -12,7 +12,7 @@ angular.module('hgApp', [
   'authSecurity',
   'ng-shortId',
   'checklist-model',
-  
+
   // Configuration
   'hgApp.config',
 
@@ -84,6 +84,11 @@ angular.module('hgApp', [
       authenticated: true,
       url: '/step3',
       templateUrl: 'views/healthcheck/_healthcheck_S3.html'
+    })
+    .state('healthcheck.S4', {
+      authenticated: true,
+      url: '/step4',
+      templateUrl: 'views/healthcheck/_healthcheck_S4.html'
     })
     .state('addProp', {
       authenticated: true,
