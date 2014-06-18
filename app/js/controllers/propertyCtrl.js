@@ -7,7 +7,7 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
       $scope.property = null;
       $scope.imageFile = null;
 
-      // TODO Move this to resolve      
+      // TODO Move this to resolve
       checklistsManager.getAllChecklists().$on('loaded', function (data) {
         $scope.allChecklists = data;
         $scope.totalTasks = 0;
@@ -57,8 +57,15 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         });
       }
 
+      $scope.addNewPropertyOverview = function (newProperty) {
+        $rootScope.propertyData = newProperty;
+      }
+
       $scope.addNewProperty = function (newProperty) {
-        var property = angular.copy(newProperty);
+        var propertySpecs = angular.copy(newProperty);
+        var property = _.merge($rootScope.propertyData, propertySpecs);
+        console.log(property);
+        
         property.dateAdded = new Date().getTime();
 
         // Initial empty checklists
