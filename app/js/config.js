@@ -12,7 +12,12 @@ angular.module('hgApp.config', [])
 
    // Google API Key for Cloud Storage
    .constant('GAPIKEY', 'AIzaSyBBGscNQ9LWYaO2tpAbq6Do5rJH58NKBY4')
-   .constant('GAPI_CLIENTID', '815222281377-7sb8cstkbakdrmhhskbhj33pbivcd5ch.apps.googleusercontent.com')
+
+   // Production client ID
+   // .constant('GAPI_CLIENTID', '815222281377-7sb8cstkbakdrmhhskbhj33pbivcd5ch.apps.googleusercontent.com')
+
+   // Local dev client id
+   .constant('GAPI_CLIENTID', '815222281377-56mijm3a9t5scf69gd45p1kbro38uou3.apps.googleusercontent.com')   
 
    // Google scopes
    .constant("scope", ['profile', 'email']);
