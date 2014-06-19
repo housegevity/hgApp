@@ -25,7 +25,6 @@ angular.module('hgApp', [
   'hgApp.service.firebase',
   'hgApp.service.propertyManager',
   'hgApp.service.documentManager',
-  'hgApp.service.testData', // Temporary for testing only
 
   // Directives
   'hgApp.directives.version',
