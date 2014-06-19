@@ -57,12 +57,6 @@ angular.module('hgApp', [
       templateUrl: 'views/property/property.html',
       controller: 'propertyCtrl'
     })
-    .state('property.detail', {
-      authenticated: true,
-      url: '/:propertyID',
-      templateUrl: 'views/property/_property_details.html',
-      controller: 'propertyCtrl'
-    })
     .state('healthcheck', {
       authenticated: true,
       abstract: true,
