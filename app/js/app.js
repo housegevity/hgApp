@@ -57,12 +57,6 @@ angular.module('hgApp', [
       templateUrl: 'views/property/property.html',
       controller: 'propertyCtrl'
     })
-    .state('property.detail', {
-      authenticated: true,
-      url: '/:propertyID',
-      templateUrl: 'views/property/_property_details.html',
-      controller: 'propertyCtrl'
-    })
     .state('healthcheck', {
       authenticated: true,
       abstract: true,
@@ -70,25 +64,20 @@ angular.module('hgApp', [
       templateUrl: 'views/property/property.html',
       controller: 'propertyCtrl'
     })
-    .state('healthcheck.S1', {
+    .state('healthcheck.monthly', {
       authenticated: true,
-      url: '/step1',
-      templateUrl: 'views/healthcheck/_healthcheck_S1.html'
+      url: '/monthly',
+      templateUrl: 'views/healthcheck/_healthcheck_monthly.html'
     })
-    .state('healthcheck.S2', {
+    .state('healthcheck.seasonal', {
       authenticated: true,
-      url: '/step2',
-      templateUrl: 'views/healthcheck/_healthcheck_S2.html'
+      url: '/seasonal',
+      templateUrl: 'views/healthcheck/_healthcheck_seasonal.html'
     })
-    .state('healthcheck.S3', {
+    .state('healthcheck.annual', {
       authenticated: true,
-      url: '/step3',
-      templateUrl: 'views/healthcheck/_healthcheck_S3.html'
-    })
-    .state('healthcheck.S4', {
-      authenticated: true,
-      url: '/step4',
-      templateUrl: 'views/healthcheck/_healthcheck_S4.html'
+      url: '/annual',
+      templateUrl: 'views/healthcheck/_healthcheck_annual.html'
     })
     .state('addProp', {
       authenticated: true,
