@@ -49,34 +49,29 @@ angular.module('hgApp', [
       templateUrl: 'views/dash/dashboard.html',
       controller: 'dashCtrl'
     })
-    .state('property', {
-      authenticated: true,
-      abstract: true,
-      url: '/property',
-      templateUrl: 'views/property/property.html',
-      controller: 'propertyCtrl'
-    })
     .state('healthcheck', {
       authenticated: true,
-      abstract: true,
       url: '/property/:propertyID/healthcheck',
-      templateUrl: 'views/property/property.html',
-      controller: 'propertyCtrl'
+      abstract: true,
+      templateUrl: 'views/property/property.html'
     })
-    .state('healthcheck.monthly', {
+    .state('healthcheck.checklists', {
       authenticated: true,
-      url: '/monthly',
-      templateUrl: 'views/healthcheck/_healthcheck_monthly.html'
-    })
-    .state('healthcheck.seasonal', {
-      authenticated: true,
-      url: '/seasonal',
-      templateUrl: 'views/healthcheck/_healthcheck_seasonal.html'
-    })
-    .state('healthcheck.annual', {
-      authenticated: true,
-      url: '/annual',
-      templateUrl: 'views/healthcheck/_healthcheck_annual.html'
+      url: '/{checklistName:monthly|seasonal-summer|seasonal-winter|annual}', // TODO make this dynamic
+      templateUrl: 'views/property/_healthcheck.html',
+      controller: 'propertyCtrl',
+      resolve: {
+        checklistsRef: function (checklistsManager) {
+          return checklistsManager.getAllChecklists();
+        },
+        currentChecklistRef: function ($stateParams, checklistsManager) {
+          return checklistsManager.findChecklist($stateParams.checklistName);
+        },
+        checklistsFlow: function () {
+          // TODO make this dynamic
+          return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
+        }
+      }
     })
     .state('addProp', {
       authenticated: true,

@@ -5,8 +5,6 @@ angular.module('hgApp.controller.dashCtrl', [])
 
 .controller('dashCtrl', function ($log, $rootScope, $scope, $http, $location, $q, $stateParams, propertyManager, checklistsManager) {
   $scope.loadProperties = function (event, user) {
-    var propsPromise = $q.defer();
-
     propertyManager.list(user).$on('loaded', function (data) {
       $scope.numProperties = 0;
       $scope.allProperties = data;
@@ -15,14 +13,13 @@ angular.module('hgApp.controller.dashCtrl', [])
         $scope.numProperties++;
       });
 
-      $scope.$broadcast("properties:loaded");
+      $scope.$broadcast("userProperties:loaded");
     });
   };
 
-  $scope.$on("properties:loaded", function (event) {
+  $scope.checkForNotifications = function (event) {
     checklistsManager.getAllChecklists().$on('loaded', function (data) {
       $scope.checklistReminders = {};
-
 
       // Check each property for completion progress
       angular.forEach($scope.allProperties, function (prop) {
@@ -39,7 +36,7 @@ angular.module('hgApp.controller.dashCtrl', [])
 
           // All checklists need to be checked for completion now
           if (Array.isArray(completedTasks) && completedTasks.length === masterChecklist.tasks.length) {
-            $log.info("This checklist is complete: ", masterChecklist.displayName);
+            $log.info("This checklist is already complete.", masterChecklist.displayName);
           } else {
             switch (reminder.type) {
             case 'annually':
@@ -89,12 +86,13 @@ angular.module('hgApp.controller.dashCtrl', [])
         });
       });
     });
-  });
+  };
 
   if ($rootScope.auth.user) {
     $scope.loadProperties(null, $rootScope.auth.user);
-  } else {
-    // Initialize the scope, only if the user has logged in.
-    $scope.$on("$firebaseSimpleLogin:login", $scope.loadProperties);
   }
+
+  // Register listeners
+  $scope.$on("$firebaseSimpleLogin:login", $scope.loadProperties);
+  $scope.$on("userProperties:loaded", $scope.checkForNotifications);
 });
