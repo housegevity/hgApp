@@ -8,6 +8,11 @@
 		  <strong>Welcome to your Dashboard!</strong> You are now logged in as {{ auth.user.displayName }}.
 		</div>
 
+		<div class="alert alert-danger alert-dismissable" ng-repeat="reminder in checklistReminders">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>You need to complete the <u>{{ reminder.checklistName }}</u> for <em>{{ reminder.propertyName }}</em>.</strong>
+		</div>
+
 		<hr>
 
 		<div class="row">
