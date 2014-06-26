@@ -6,9 +6,9 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
     function ($rootScope, $scope, $state, $stateParams, $log, checklistsRef, currentChecklistRef, checklistsFlow, propertyManager) {
       $scope.property = null;
       $scope.imageFile = null;
+      $scope.checklistButton = {};
 
       if (!$scope.nextChecklist) {
-        $log.info("Searching");
         for (var i = 0; i < checklistsFlow.length; i++) {
           if (checklistsFlow[i] === $stateParams.checklistName) {
             $scope.nextChecklist = checklistsFlow[i + 1] || 'dash';
@@ -60,13 +60,20 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         });
       };
 
-      $scope.updateChecklistProgress = function () {
-        $scope.propertyRef.
-
-        $scope.propertyRef.$save().then(function (data) {
-          $log.info("Saved property");
-          $scope.findProperty(null, $rootScope.auth.user);
+      $scope.updateChecklistProgress = function (checklist) {
+        angular.forEach($scope.property.checklists, function (propChklist, propChklistKey) {
+          var completedTasks = [];
+          angular.forEach($scope.checklistButton, function (isDone, taskName) {
+            if (isDone) {
+              completedTasks.push(taskName);
+            }
+          });
+          if (completedTasks.length > 0) {
+            propChklist.tasks = completedTasks;
+          }
         });
+        $log.debug($scope.property)
+        propertyManager.save($rootScope.auth.user, $scope.property);
       };
 
       $scope.addNewPropertyOverview = function (newProperty) {
