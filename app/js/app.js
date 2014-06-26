@@ -8,6 +8,7 @@ angular.module('hgApp', [
   'angularFileUpload',
   'angular-gapi',
   'ui.router',
+  'ui.bootstrap',
   'waitForAuth',
   'authSecurity',
   'ng-shortId',
@@ -78,7 +79,20 @@ angular.module('hgApp', [
       abstract: true,
       url: '/property/add',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'propertyCtrl'
+      controller: 'propertyCtrl',
+      resolve: {
+        checklistsRef: function (checklistsManager) {
+          return checklistsManager.getAllChecklists();
+        },
+        currentChecklistRef: function ($stateParams, checklistsManager) {
+          return checklistsManager.findChecklist($stateParams.checklistName);
+        },
+        checklistsFlow: function () {
+          // TODO make this dynamic
+          return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
+        }
+      }
+
     })
     .state('addProp.S1', {
       url: '/step1',

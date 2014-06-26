@@ -3,25 +3,24 @@
    		<h4>{{ masterChecklist.displayName }}</h4>
    		<p>{{ masterChecklist.description }}</p>
 	</div>
-
 	<form class="form-checklist">
 		<div class="form-group row" ng-repeat="task in masterChecklist.tasks">
+
 			<div class="col-sm-8">
 				<label class="control-label">{{task.description}} </label>
     		</div>
-			<div class="col-sm-2 col-xs-6">
-				<input type="hidden" name="{{task.name}}" value="task.name">
-				<a href="" class="btn btn-default btn-block">YES</a>
+			<div class="btn-group col-sm-2 col-xs-6">
+				<button href="" class="btn btn-default btn-block" ng-model="checklistButton[task.name]" btn-radio="true" uncheckable>YES</button>
 			</div>
-			<div class="col-sm-2 col-xs-6">
-				<a class="btn btn-default btn-block">NO</a>
+			<div class="btn-group col-sm-2 col-xs-6">
+				<button class="btn btn-default btn-block" ng-model="checklistButton[task.name]" btn-radio="false" uncheckable>NO</button>
 			</div>
 	    </div>
 		<div class="modal-footer">
 			<a class="btn btn-default" ui-sref="dash">
 	    	Cancel
 	    	</a>
-	    	<button ng-if="nextChecklist" type="submit" class="btn btn-default" value="Next" ui-sref="healthcheck.checklists({'checklistName': nextChecklist})">
+	    	<button ng-if="nextChecklist" type="submit" class="btn btn-default" value="Next" ui-sref="healthcheck.checklists({'checklistName': nextChecklist})" ng-click="updateChecklistProgress(masterChecklist)">
 	    		Next
 	    	</button>
 	    	
