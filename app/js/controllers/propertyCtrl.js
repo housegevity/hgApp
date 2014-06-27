@@ -1,3 +1,4 @@
+/* global angular, _ */
 'use strict';
 
 /* Controllers */
@@ -72,7 +73,6 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
             propChklist.tasks = completedTasks;
           }
         });
-        $log.debug($scope.property)
         propertyManager.save($rootScope.auth.user, $scope.property);
       };
 
