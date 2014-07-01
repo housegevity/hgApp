@@ -1,3 +1,4 @@
+/* global angular, _ */
 'use strict';
 
 /* Controllers */
@@ -61,18 +62,14 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
       };
 
       $scope.updateChecklistProgress = function (checklist) {
-        angular.forEach($scope.property.checklists, function (propChklist, propChklistKey) {
-          var completedTasks = [];
-          angular.forEach($scope.checklistButton, function (isDone, taskName) {
-            if (isDone) {
-              completedTasks.push(taskName);
-            }
-          });
-          if (completedTasks.length > 0) {
-            propChklist.tasks = completedTasks;
+        var completedTasks = [];
+        angular.forEach($scope.checklistButton, function (isDone, taskName) {
+          if (isDone) {
+            completedTasks.push(taskName);
           }
         });
-        $log.debug($scope.property)
+        $log.info("Add completed tasks.", completedTasks);
+        $scope.property.checklists[checklist.id].tasks = completedTasks;
         propertyManager.save($rootScope.auth.user, $scope.property);
       };
 
