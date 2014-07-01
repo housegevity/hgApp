@@ -48,7 +48,12 @@ angular.module('hgApp', [
       authRequired: true, // must authenticate before viewing this page
       url: '/dash',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'dashCtrl'
+      controller: 'dashCtrl',
+      resolve: {
+        allChecklists: function (checklistsManager) {
+          return checklistsManager.getAllChecklists();
+        }
+      }
     })
     .state('healthcheck', {
       authenticated: true,
@@ -62,10 +67,10 @@ angular.module('hgApp', [
       templateUrl: 'views/property/_healthcheck.html',
       controller: 'propertyCtrl',
       resolve: {
-        checklistsRef: function (checklistsManager) {
+        allChecklists: function (checklistsManager) {
           return checklistsManager.getAllChecklists();
         },
-        currentChecklistRef: function ($stateParams, checklistsManager) {
+        currentChecklist: function ($stateParams, checklistsManager) {
           return checklistsManager.findChecklist($stateParams.checklistName);
         },
         checklistsFlow: function () {
@@ -81,18 +86,10 @@ angular.module('hgApp', [
       templateUrl: 'views/dash/dashboard.html',
       controller: 'propertyCtrl',
       resolve: {
-        checklistsRef: function (checklistsManager) {
+        allChecklists: function (checklistsManager) {
           return checklistsManager.getAllChecklists();
-        },
-        currentChecklistRef: function ($stateParams, checklistsManager) {
-          return checklistsManager.findChecklist($stateParams.checklistName);
-        },
-        checklistsFlow: function () {
-          // TODO make this dynamic
-          return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
         }
       }
-
     })
     .state('addProp.S1', {
       url: '/step1',
