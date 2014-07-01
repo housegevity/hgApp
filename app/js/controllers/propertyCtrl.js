@@ -3,11 +3,12 @@
 
 /* Controllers */
 angular.module('hgApp.controller.propertyCtrl', ['firebase'])
-  .controller('propertyCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$log', 'checklistsRef', 'currentChecklistRef', 'checklistsFlow', 'propertyManager',
-    function ($rootScope, $scope, $state, $stateParams, $log, checklistsRef, currentChecklistRef, checklistsFlow, propertyManager) {
+  .controller('propertyCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$log', 'propertyManager', 'allChecklists', 'currentChecklist', 'checklistsFlow',
+    function ($rootScope, $scope, $state, $stateParams, $log, propertyManager, allChecklists, currentChecklist, checklistsFlow ) {
       $scope.property = null;
-      $scope.imageFile = null;
-      $scope.checklistButton = {};
+      $scope.taskStatuses = {};
+      $scope.allChecklists = allChecklists;
+      $scope.masterChecklist = currentChecklist;
 
       if (!$scope.nextChecklist) {
         for (var i = 0; i < checklistsFlow.length; i++) {
@@ -17,59 +18,30 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         }
       }
 
-      currentChecklistRef.$on('loaded', function (data) {
-        if (!data) {
-          $state.go('dash');
-        } else {
-          $scope.masterChecklist = data;
-        }
-      });
-
-      checklistsRef.$on('loaded', function (data) {
-        $scope.allChecklists = data;
-      });
-
-      $scope.onImageSelect = function ($files) {
-        $scope.imageFile = $files[0];
-      };
-
-      $scope.uploadImage = function () {
-        var user = $rootScope.auth.user;
-
-        if ($scope.imageFile) {
-          propertyManager.upload(user, $scope.imageFile);
-          $scope.imageFile = null;
-        }
-      };
-
       $scope.findProperty = function (event, user) {
         $scope.propertyRef = propertyManager.get(user, $stateParams.propertyID);
-
         $scope.propertyRef.$on('loaded', function (data) {
           $scope.property = data;
-
-          // Calculate total completed tasks.
-          $scope.completedTasks = 0;
-          angular.forEach($scope.property.checklists, function (v, k) {
-            angular.forEach(v.tasks, function (tv, tk) {
-              $scope.completedTasks++;
-            });
+          angular.forEach(currentChecklist.tasks, function (task, idx) {
+            var completedChecklist = $scope.property.checklists[currentChecklist.id];
+            if (completedChecklist.tasks.indexOf(task.name) !== -1) {
+              $scope.taskStatuses[task.name] = true;
+            }
           });
-          if ($scope.totalTasks > 0) {
-            $scope.completedTasksPercentage = Math.round($scope.completedTasks / $scope.totalTasks * 100);
-          }
+          
         });
+
       };
 
-      $scope.updateChecklistProgress = function (checklist) {
+      $scope.updateChecklistProgress = function () {
         var completedTasks = [];
-        angular.forEach($scope.checklistButton, function (isDone, taskName) {
+        angular.forEach($scope.taskStatuses, function (isDone, taskName) {
           if (isDone) {
             completedTasks.push(taskName);
           }
         });
-        $log.info("Add completed tasks.", completedTasks);
-        $scope.property.checklists[checklist.id].tasks = completedTasks;
+        $scope.property.checklists[currentChecklist.id].tasks = completedTasks;
+        $log.info($scope.property.checklists[currentChecklist.id].tasks);
         propertyManager.save($rootScope.auth.user, $scope.property);
       };
 
