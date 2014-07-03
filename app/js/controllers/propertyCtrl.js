@@ -3,12 +3,17 @@
 
 /* Controllers */
 angular.module('hgApp.controller.propertyCtrl', ['firebase'])
-  .controller('propertyCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$log', 'propertyManager', 'allChecklists', 'currentChecklist', 'checklistsFlow',
-    function ($rootScope, $scope, $state, $stateParams, $log, propertyManager, allChecklists, currentChecklist, checklistsFlow ) {
+  .controller('propertyCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$log', 'propertyManager', 'allChecklists', 'checklistsFlow', 'checklistsManager',
+    function ($rootScope, $scope, $state, $stateParams, $log, propertyManager, allChecklists, checklistsFlow, checklistsManager) {
       $scope.property = null;
       $scope.taskStatuses = {};
       $scope.allChecklists = allChecklists;
-      $scope.masterChecklist = currentChecklist;
+
+      if ($stateParams.checklistName) {
+        checklistsManager.findChecklist($stateParams.checklistName).then(function (data) {
+          $scope.masterChecklist = data;
+        });
+      }
 
       if (!$scope.nextChecklist) {
         for (var i = 0; i < checklistsFlow.length; i++) {
@@ -22,8 +27,8 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
         $scope.propertyRef = propertyManager.get(user, $stateParams.propertyID);
         $scope.propertyRef.$on('loaded', function (data) {
           $scope.property = data;
-          angular.forEach(currentChecklist.tasks, function (task, idx) {
-            var completedChecklist = $scope.property.checklists[currentChecklist.id];
+          angular.forEach($scope.masterChecklist.tasks, function (task, idx) {
+            var completedChecklist = $scope.property.checklists[$scope.masterChecklist.id];
             if (completedChecklist.tasks.indexOf(task.name) !== -1) {
               $scope.taskStatuses[task.name] = true;
             }
@@ -40,8 +45,8 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
             completedTasks.push(taskName);
           }
         });
-        $scope.property.checklists[currentChecklist.id].tasks = completedTasks;
-        $log.info($scope.property.checklists[currentChecklist.id].tasks);
+        $scope.property.checklists[$scope.masterChecklist.id].tasks = completedTasks;
+        $log.info($scope.property.checklists[$scope.masterChecklist.id].tasks);
         propertyManager.save($rootScope.auth.user, $scope.property);
       };
 
