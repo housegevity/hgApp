@@ -70,9 +70,6 @@ angular.module('hgApp', [
         allChecklists: function (checklistsManager) {
           return checklistsManager.getAllChecklists();
         },
-        currentChecklist: function ($stateParams, checklistsManager) {
-          return checklistsManager.findChecklist($stateParams.checklistName);
-        },
         checklistsFlow: function () {
           // TODO make this dynamic
           return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
@@ -88,6 +85,10 @@ angular.module('hgApp', [
       resolve: {
         allChecklists: function (checklistsManager) {
           return checklistsManager.getAllChecklists();
+        },
+        checklistsFlow: function () {
+          // TODO make this dynamic
+          return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
         }
       }
     })
