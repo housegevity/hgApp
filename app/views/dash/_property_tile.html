@@ -1,18 +1,17 @@
-<div class="panel panel-default">			
+<div class="panel panel-default">
   <div class="panel-heading">
 		<h4>
-			{{property.name}}
+			{{property.name}} <small>{{ property.dateAdded | date }}</small>
 			<span class="pull-right badge"><b>{{property.completion_status}}%</b> complete
 			</span>
 		</h4>
 		<span>{{property.city}}, {{property.state}}</span>
-		<span><a href="#/property/{{property.id}}">view</a></span>
   </div>
 
 	<img class="img-responsive" ng-src="{{property.photoUrl}}">
 
 	<div class="panel-body">
-		<div class="alert alert-danger" style="margin-bottom: 0;">Complete the HealthCheck <a ng-href="#/property/{{property.id}}/healthcheck/step1">here!</a>
+		<div class="alert alert-danger" style="margin-bottom: 0;">Complete the HealthCheck <a ng-href="#/property/{{property.id}}/healthcheck/monthly">here!</a>
 		</div>
 	</div>
 

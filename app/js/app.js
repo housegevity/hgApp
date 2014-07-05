@@ -8,6 +8,7 @@ angular.module('hgApp', [
   'angularFileUpload',
   'angular-gapi',
   'ui.router',
+  'ui.bootstrap',
   'waitForAuth',
   'authSecurity',
   'ng-shortId',
@@ -25,7 +26,6 @@ angular.module('hgApp', [
   'hgApp.service.firebase',
   'hgApp.service.propertyManager',
   'hgApp.service.documentManager',
-  'hgApp.service.testData', // Temporary for testing only
 
   // Directives
   'hgApp.directives.version',
@@ -48,54 +48,49 @@ angular.module('hgApp', [
       authRequired: true, // must authenticate before viewing this page
       url: '/dash',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'dashCtrl'
-    })
-    .state('property', {
-      authenticated: true,
-      abstract: true,
-      url: '/property',
-      templateUrl: 'views/property/property.html',
-      controller: 'propertyCtrl'
-    })
-    .state('property.detail', {
-      authenticated: true,
-      url: '/:propertyID',
-      templateUrl: 'views/property/_property_details.html',
-      controller: 'propertyCtrl'
+      controller: 'dashCtrl',
+      resolve: {
+        allChecklists: function (checklistsManager) {
+          return checklistsManager.getAllChecklists();
+        }
+      }
     })
     .state('healthcheck', {
       authenticated: true,
-      abstract: true,
       url: '/property/:propertyID/healthcheck',
-      templateUrl: 'views/property/property.html',
-      controller: 'propertyCtrl'
+      abstract: true,
+      templateUrl: 'views/property/property.html'
     })
-    .state('healthcheck.S1', {
+    .state('healthcheck.checklists', {
       authenticated: true,
-      url: '/step1',
-      templateUrl: 'views/healthcheck/_healthcheck_S1.html'
-    })
-    .state('healthcheck.S2', {
-      authenticated: true,
-      url: '/step2',
-      templateUrl: 'views/healthcheck/_healthcheck_S2.html'
-    })
-    .state('healthcheck.S3', {
-      authenticated: true,
-      url: '/step3',
-      templateUrl: 'views/healthcheck/_healthcheck_S3.html'
-    })
-    .state('healthcheck.S4', {
-      authenticated: true,
-      url: '/step4',
-      templateUrl: 'views/healthcheck/_healthcheck_S4.html'
+      url: '/{checklistName:monthly|seasonal-summer|seasonal-winter|annual}', // TODO make this dynamic
+      templateUrl: 'views/property/_healthcheck.html',
+      controller: 'propertyCtrl',
+      resolve: {
+        allChecklists: function (checklistsManager) {
+          return checklistsManager.getAllChecklists();
+        },
+        checklistsFlow: function () {
+          // TODO make this dynamic
+          return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
+        }
+      }
     })
     .state('addProp', {
       authenticated: true,
       abstract: true,
       url: '/property/add',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'propertyCtrl'
+      controller: 'propertyCtrl',
+      resolve: {
+        allChecklists: function (checklistsManager) {
+          return checklistsManager.getAllChecklists();
+        },
+        checklistsFlow: function () {
+          // TODO make this dynamic
+          return ['monthly', 'seasonal-summer', 'seasonal-winter', 'annual'];
+        }
+      }
     })
     .state('addProp.S1', {
       url: '/step1',
