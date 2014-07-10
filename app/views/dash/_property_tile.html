@@ -10,7 +10,7 @@
 
 	<img class="img-responsive" ng-src="{{property.photoUrl}}">
 
-	<div class="panel-body">
+	<div class="panel-body" ng-show="checklistReminders.length > 0">
 		<div class="alert alert-danger" style="margin-bottom: 0;">Complete the HealthCheck <a ng-href="#/property/{{property.id}}/healthcheck/monthly">here!</a>
 		</div>
 	</div>

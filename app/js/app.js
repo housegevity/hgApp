@@ -47,12 +47,7 @@ angular.module('hgApp', [
       authRequired: true, // must authenticate before viewing this page
       url: '/dash',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'dashCtrl',
-      resolve: {
-        allChecklists: function (checklistsManager) {
-          return checklistsManager.getAllChecklists();
-        }
-      }
+      controller: 'dashCtrl'
     })
     .state('healthcheck', {
       authRequired: true,
