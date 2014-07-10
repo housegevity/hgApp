@@ -29,7 +29,9 @@
 
       _login: function() {
          this._authenticated = true;
-         this._state.transitionTo('dash');
+         if (this._state.current && this._state.current.name === 'home') {
+            this._state.transitionTo('dash');
+         }
          // if (this._redirectToState) {
          //    this._redirect(this._redirectToState);
          //    this._redirectToState = null;
