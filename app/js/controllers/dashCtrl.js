@@ -18,11 +18,14 @@ angular.module('hgApp.controller.dashCtrl', [])
   };
 
   $scope.checkForNotifications = function (event) {
-    $scope.checklistReminders = {};
+    $scope.checklistReminders = null;
 
     // Check each property for completion progress
     angular.forEach($scope.allProperties, function (prop) {
       $log.info("Calculating percentage complete.");
+      var numTotalTasks = 0;
+      prop.totalTasksCompleted = 0;
+
       checklistsManager.getAllChecklists().then(function (data) {
         angular.forEach(data, function (masterChecklist, key) {
           var numCompleted = 0;
@@ -30,13 +33,16 @@ angular.module('hgApp.controller.dashCtrl', [])
           var reminder = masterChecklist.reminder;
           var completedTasks = prop.checklists[key].tasks;
           var today = new Date();
+          var totalTasks = Object.keys(masterChecklist.tasks).length;
+          numTotalTasks += totalTasks;
 
           // 
           // TODO Check if the checklists need to be reset
           //
 
           // All checklists need to be checked for completion now
-          if (completedTasks && completedTasks.length === Object.keys(masterChecklist.tasks).length) {
+
+          if (completedTasks && completedTasks.length === totalTasks) {
             $log.info("This checklist is already complete.", masterChecklist.displayName);
           } else {
             switch (reminder.type) {
@@ -77,15 +83,24 @@ angular.module('hgApp.controller.dashCtrl', [])
             }
           }
 
+          if (completedTasks && completedTasks.length) {
+            prop.totalTasksCompleted += completedTasks.length;
+          }
+
           // Update the reminders
           if (notify) {
+            $scope.checklistReminders = $scope.checklistReminders || {};
             $scope.checklistReminders[prop.id + '-' + masterChecklist.id] = {
               checklistName: masterChecklist.displayName,
               propertyName: prop.name
             };
           }
         });
+
+        prop.totalTasksCompleted = Math.floor((prop.totalTasksCompleted / numTotalTasks) * 100)
       });
+
+      
     });
   };
 
