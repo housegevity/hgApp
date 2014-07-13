@@ -39,7 +39,6 @@ angular.module('hgApp', [
   $urlRouterProvider.otherwise("/home");
   $stateProvider
     .state('home', {
-      authRequired: true, // must authenticate before viewing this page
       url: '/home',
       templateUrl: 'views/home.html',
       controller: 'loginCtrl'
@@ -48,21 +47,16 @@ angular.module('hgApp', [
       authRequired: true, // must authenticate before viewing this page
       url: '/dash',
       templateUrl: 'views/dash/dashboard.html',
-      controller: 'dashCtrl',
-      resolve: {
-        allChecklists: function (checklistsManager) {
-          return checklistsManager.getAllChecklists();
-        }
-      }
+      controller: 'dashCtrl'
     })
     .state('healthcheck', {
-      authenticated: true,
+      authRequired: true,
       url: '/property/:propertyID/healthcheck',
       abstract: true,
       templateUrl: 'views/property/property.html'
     })
     .state('healthcheck.checklists', {
-      authenticated: true,
+      authRequired: true,
       url: '/{checklistName:monthly|seasonal-summer|seasonal-winter|annual}', // TODO make this dynamic
       templateUrl: 'views/property/_healthcheck.html',
       controller: 'propertyCtrl',
@@ -77,7 +71,7 @@ angular.module('hgApp', [
       }
     })
     .state('addProp', {
-      authenticated: true,
+      authRequired: true,
       abstract: true,
       url: '/property/add',
       templateUrl: 'views/dash/dashboard.html',

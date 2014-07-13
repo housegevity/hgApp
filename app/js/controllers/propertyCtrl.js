@@ -29,7 +29,7 @@ angular.module('hgApp.controller.propertyCtrl', ['firebase'])
           $scope.property = data;
           angular.forEach($scope.masterChecklist.tasks, function (task, idx) {
             var completedChecklist = $scope.property.checklists[$scope.masterChecklist.id];
-            if (completedChecklist.tasks.indexOf(task.name) !== -1) {
+            if (completedChecklist.tasks && completedChecklist.tasks.indexOf(task.name) !== -1) {
               $scope.taskStatuses[task.name] = true;
             }
           });
