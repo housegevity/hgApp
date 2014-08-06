@@ -4,6 +4,8 @@
 angular.module('hgApp.controller.dashCtrl', [])
 
 .controller('dashCtrl', function ($log, $rootScope, $scope, $http, $location, $q, $stateParams, checklistsManager, propertyManager) {
+  $scope.showReminders = {};
+  
   $scope.loadProperties = function (event, user) {
     propertyManager.list(user).$on('loaded', function (data) {
       $scope.numProperties = 0;
@@ -89,6 +91,7 @@ angular.module('hgApp.controller.dashCtrl', [])
 
           // Update the reminders
           if (notify) {
+            $scope.showReminders[prop.id] = true;
             $scope.checklistReminders = $scope.checklistReminders || {};
             $scope.checklistReminders[prop.id + '-' + masterChecklist.id] = {
               checklistName: masterChecklist.displayName,
